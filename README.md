@@ -6,4 +6,4 @@ Current Specifications of the Cache :
 - Pipelined Implementation
 - Requests aligned to 4B Boundaries
 - Writeback Policy
-- Read Allocte/ Write Allocate Policy
+- Read Allocate/ Write Allocate Policy
