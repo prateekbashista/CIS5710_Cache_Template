@@ -97,7 +97,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     parameter integer CACHE_LINES = $clog2((SIZE*BYTE_WIDTH)/(BLOCK_SIZE*32));
     parameter integer OFFSET = $clog2(BLOCK_SIZE * 32 / BYTE_WIDTH);
-    parameter integer INDEX  = CACHE_LINES - $clog2(C_WAYS);
+    parameter integer INDEX  = CACHE_LINES - $clog2(WAYS);
     parameter integer TAG_SIZE  = 32 - INDEX - OFFSET;
     //---------------------------------------------------------------------------
 
@@ -127,42 +127,171 @@ output logic                axil_rready_mng     // Read Response Ready Out
     */
 
 
+
     //------------------------------- Data RAM ----------------------------------
     // For 2 Way Set Associative Cache, 2 Data Banks are Required
+    // Size = 2 ^ Index = 2 ^ 12 = 4096 Lines each containing 1 32-Bit Word
+    // Size for 1 ram = 4096 x 32/8 = 16384 Bytes
 
+    logic [INDEX - 1 : 0] data_addr;    // Data Read/Write Address
+    logic read_enable[2];               // Array, for each Bank Read Enable
+    logic [31 : 0] data_out[2];         // Output from the RAM
+    logic [31 : 0] data_in[2];          // Data to be written in RAM
+    logic write_enable[2];              // Write-Enable
 
     sram
     #(
-        .SIZE(),
-        .DATA_WIDTH(),
-        .ADDR_WIDTH()
+        .SIZE(4096),
+        .DATA_WIDTH(32),
+        .ADDR_WIDTH(INDEX)
     )
-    data_ram_1
+    data_ram_0
     (
-        .clk(),        // System Clock
-        .addr(),       // Read/Write Address from the Memory
-        .re(),         // Read Enable
-        .data_out(),   // Output from the Memory
-        .data_in(),    // Data to be written
-        .we()          // Write Enable
+        .clk(clk),              
+        .addr(data_addr),       
+        .re(read_enable[0]),                  
+        .data_out(data_out[0]),            
+        .data_in(data_in[0]),             
+        .we(write_enable[0])                   
     );
 
     sram
     #(
-        .SIZE(),
-        .DATA_WIDTH(),
-        .ADDR_WIDTH()
+        .SIZE(4096),
+        .DATA_WIDTH(32),
+        .ADDR_WIDTH(INDEX)
     )
     data_ram_1
     (
-        .clk(),        // System Clock
-        .addr(),       // Read/Write Address from the Memory
-        .re(),         // Read Enable
-        .data_out(),   // Output from the Memory
-        .data_in(),    // Data to be written
-        .we()          // Write Enable
+        .clk(clk),        
+        .addr(data_addr),       
+        .re(read_enable[1]),         
+        .data_out(data_out[1]),   
+        .data_in(data_in[1]),    
+        .we(write_enable[1])          
     );
     //---------------------------------------------------------------------------
+
+    //--------------------------Meta-data Tag RAM -------------------------------
+    // Since Tag is associated with each cache line, we will require 2 Tag Data Banks
+    // Tag Size for current configuration is 18 Address Bits
+    // Size = 2 ^ 12 = 4096 Lines each containing 1 18-Bit Tag Data
+    // Size for 1 Ram = 4096 x 18 = 73,728 Bits
+    // Tag Overhead  = 18 / 32 * 100 = 56.25 %
+
+    logic [INDEX - 1 : 0] tag_addr;    
+    logic tag_read_enable[2];               
+    logic [TAG_SIZE - 1 : 0] tag_out[2];        
+    logic [TAG_SIZE - 1 : 0] tag_in[2];          
+    logic tag_write_enable[2];              
+
+    sram
+    #(
+        .SIZE(4096),
+        .DATA_WIDTH(TAG_SIZE),
+        .ADDR_WIDTH(INDEX)
+    )
+    tag_ram_0
+    (
+        .clk(clk),              
+        .addr(tag_addr),       
+        .re(tag_read_enable[0]),                  
+        .data_out(tag_out[0]),            
+        .data_in(tag_in[0]),             
+        .we(tag_write_enable[0])                   
+    );
+
+    sram
+    #(
+        .SIZE(4096),
+        .DATA_WIDTH(TAG_SIZE),
+        .ADDR_WIDTH(INDEX)
+    )
+    tag_ram_1
+    (
+        .clk(clk),              
+        .addr(tag_addr),       
+        .re(tag_read_enable[1]),                  
+        .data_out(tag_out[1]),            
+        .data_in(tag_in[1]),             
+        .we(tag_write_enable[1])            
+    );
+    //---------------------------------------------------------------------------
+
+    //--------------------------Meta-data Valid RAM -----------------------------
+    // Since Valid Bit is associated with each cache line, we will require 2 Valid Banks
+    // Size = 2 ^ 12 = 4096 Lines each containing 1 1-Bit Valid Data
+    // Size for 1 Ram = 4096 x 1 = 4096 Bits
+
+    logic [INDEX - 1 : 0] valid_addr;    
+    logic valid_read_enable[2];               
+    logic valid_out[2];         
+    logic valid_in[2];          
+    logic valid_write_enable[2];            
+
+    sram
+    #(
+        .SIZE(4096),
+        .DATA_WIDTH(1),
+        .ADDR_WIDTH(INDEX)
+    )
+    valid_ram_0
+    (
+        .clk(clk),              
+        .addr(valid_addr),       
+        .re(valid_read_enable[0]),                  
+        .data_out(valid_out[0]),            
+        .data_in(valid_in[0]),             
+        .we(valid_write_enable[0])                   
+    );
+
+    sram
+    #(
+        .SIZE(4096),
+        .DATA_WIDTH(1),
+        .ADDR_WIDTH(INDEX)
+    )
+    valid_ram_1
+    (
+        .clk(clk),              
+        .addr(valid_addr),       
+        .re(valid_read_enable[1]),                  
+        .data_out(valid_out[1]),            
+        .data_in(valid_in[1]),             
+        .we(valid_write_enable[1])               
+    );
+    //---------------------------------------------------------------------------
+
+    //--------------------------Meta-data Valid RAM -----------------------------
+    // This Cache has Least Recently Used (LRU) eviction policy
+    // For associativity > 2, LRU ranking bits are required for all cache lines
+    // But, since associativity = 2, we only require 1 bit per set.
+    // if lru  = 0, evict way 0, if 1, evict way 1
+    // Thus, we only require 1 RAM Bank
+
+    logic [INDEX - 1 : 0] lru_addr;    
+    logic lru_read_enable;               
+    logic lru_out;         
+    logic lru_in;          
+    logic lru_write_enable;            
+
+    sram
+    #(
+        .SIZE(4096),
+        .DATA_WIDTH(1),
+        .ADDR_WIDTH(INDEX)
+    )
+    lru_ram
+    (
+        .clk(clk),              
+        .addr(lru_addr),       
+        .re(lruread_enable),                  
+        .data_out(lru_out),            
+        .data_in(lru_in),             
+        .we(lru_write_enable)                   
+    );
+
+    //---------------------------------------------------------------------------    
 
 
 
