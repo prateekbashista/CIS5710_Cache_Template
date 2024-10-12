@@ -8,7 +8,6 @@ module sram
 )
 (
     input                                   clk,        // System Clock
-    //input                                   rst_n,    // System Reset
     input           [ADDR_WIDTH - 1 : 0]    addr,       // Read/Write Address from the Memory
     input                                   re,         // Read Enable
     output  logic   [DATA_WIDTH - 1 : 0]    data_out,   // Output from the Memory

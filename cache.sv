@@ -13,7 +13,7 @@
 module cache
 (
 /*--------------------------------------------------------------------------
-    core clock and reset
+    system clock and reset
 --------------------------------------------------------------------------*/
 input                       clk,                // System Clock
 input                       rst_n,              // Negative Edge Triggered Sychronous Reset
@@ -70,19 +70,18 @@ output logic                axil_rready_mng     // Read Response Ready Out
 );
 
 
-    typedef enum logic [3:0] {  IDLE = 4'b0000, 
-                                READ = 4'b0001, 
-                                WRITE = 4'b0011, 
-                                WRITE_BACK_MEM = 4'b0100, 
-                                FETCH_MEM = 4'b0101, 
-                                CACHE_FILL = 4'b0110, 
-                                CACHE_UPDATE_READ = 4'b0111, 
-                                WRITE_BACK_CHECK = 4'b1000, 
-                                WAIT_FOR_DATA = 4'b1001, 
-                                CACHE_UPDATE_WRITE = 4'b1010, 
-                                WAIT_FOR_RREADY = 4'b1011,
-                                WAIT_FOR_BREADY = 4'b1100, 
-                                WB_REG_STORE = 4'b1101} states;
+    typedef enum logic [3:0] {  IDLE  = 4'h0,
+                                WAIT_FOR_DATA = 4'h1,
+                                READ = 4'h2,
+                                WRITE = 4'h3,
+                                MEM_READ_REQ = 4'h4,
+                                MEM_AXI_RRESP = 4'h5,
+                                MEM_WRITE_REQ = 4'h6,
+                                MEM_AXI_BRESP = 4'h7,
+                                READ_UPDATE = 4'h8,
+                                WRITE_UPDATE = 4'h9,
+                                MNG_RREADY = 4'hA,
+                                MNG_BREADY = 4'hB } states;
 
     states state, next_state;
 
@@ -103,7 +102,8 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
 
     
-    /* We Bank the Cache Across Associativity of a set so that we get parallel access
+    /*------------------------------------------------------------------------------ 
+       We Bank the Cache Across Associativity of a set so that we get parallel access
        to all the cache lines of a set. 
        So for a 2-way set associative cache, 2 banks are required :
 
@@ -124,7 +124,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
             |               |       |               |
             -----------------       -----------------    
                    WAY 0                  WAY 1                    
-    */
+    -------------------------------------------------------------------------------*/
 
 
 
@@ -285,7 +285,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
     (
         .clk(clk),              
         .addr(lru_addr),       
-        .re(lruread_enable),                  
+        .re(lru_read_enable),                  
         .data_out(lru_out),            
         .data_in(lru_in),             
         .we(lru_write_enable)                   
@@ -293,6 +293,383 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     //---------------------------------------------------------------------------    
 
+    //--------------------------Meta-data Dirty RAM -----------------------------
+    // Since Dirty Bit is associated with each cache line, we will require 2 Dirty Bit Banks
+    // Size = 2 ^ 12 = 4096 Lines each containing 1 1-Bit Dirty Bit Data
+    // Size for 1 Ram = 4096 x 1 = 4096 Bits
 
+    logic [INDEX - 1 : 0] dirty_addr;    
+    logic dirty_read_enable[2];               
+    logic dirty_out[2];         
+    logic dirty_in[2];          
+    logic dirty_write_enable[2];            
+
+    sram
+    #(
+        .SIZE(4096),
+        .DATA_WIDTH(1),
+        .ADDR_WIDTH(INDEX)
+    )
+    dirty_ram_0
+    (
+        .clk(clk),              
+        .addr(dirty_addr),       
+        .re(dirty_read_enable[0]),                  
+        .data_out(dirty_out[0]),            
+        .data_in(dirty_in[0]),             
+        .we(dirty_write_enable[0])                   
+    );
+
+    sram
+    #(
+        .SIZE(4096),
+        .DATA_WIDTH(1),
+        .ADDR_WIDTH(INDEX)
+    )
+    valid_ram_1
+    (
+        .clk(clk),              
+        .addr(dirty_addr),       
+        .re(dirty_read_enable[1]),                  
+        .data_out(dirty_out[1]),            
+        .data_in(dirty_in[1]),             
+        .we(dirty_write_enable[1])                  
+    );
+    //---------------------------------------------------------------------------
+
+
+    // AXI-Lite State Machine
+    always_comb begin : axi_interface
+        case(state)
+        IDLE : begin
+
+            if(axil_arready_sbd && axil_arvalid_sbd) begin // read address valid
+                next_state = READ;
+            end
+            else if(axil_awready_sbd && axil_awvalid_sbd && axil_wready_sbd && axil_wvalid_sbd) begin
+                next_state = WRITE;
+            end
+            else if(axil_awready_sbd && axil_awvalid_sbd) begin
+                next_state = WAIT_FOR_DATA;
+            end
+            else begin
+                next_state = IDLE;
+            end
+        end
+        WAIT_FOR_DATA : begin
+
+            if(axil_wready_sbd && axil_wvalid_sbd) begin
+                next_state = WRITE;
+            end
+            else begin
+                next_state = WAIT_FOR_DATA;
+            end
+        end
+        READ : begin
+
+        end
+        WRITE : begin
+        end
+        MEM_READ_REQ : begin
+        end
+        MEM_AXI_RRESP : begin
+        end
+        MEM_WRITE_REQ : begin
+        end
+        MEM_AXI_BRESP : begin
+        end
+        READ_UPDATE : begin
+        end
+        WRITE_UPDATE : begin
+        end
+        MNG_RREADY : begin
+        end
+        MNG_BREADY : begin
+        end
+        endcase
+    end
+
+    //Address and Data Register
+    reg [31:0] read_address;
+    logic [31:0] next_read_address;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            read_address <= 0;
+        end
+        else begin
+            read_address <= next_read_address;
+        end
+    end
+
+
+    reg [31:0] write_address;
+    logic [31:0] next_write_address;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            write_address <= 0;
+        end
+        else begin
+            write_address <= next_write_address;
+        end
+    end
+
+    reg [31:0] write_data;
+    logic [31:0] next_write_data;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            write_data <= 0;
+        end
+        else begin
+            write_data <= next_write_data;
+        end
+    end
+
+
+    // Tag and Index Storage Registers
+    reg [TAG_SIZE - 1 : 0] tag;
+    logic [TAG_SIZE - 1 : 0] next_tag;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            tag <= 0;
+        end
+        else begin
+            tag <= next_tag;
+        end
+    end
+
+    reg [INDEX - 1 : 0] index;
+    logic [INDEX - 1 : 0] next_index;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            index <= 0;
+        end
+        else begin
+            index <= next_index;
+        end
+    end
+
+
+
+    // State Datapath
+    always_comb begin : state_datapath
+
+        // Defaut State of the Signal
+        
+        // Subordinate Interface Ready Signals
+        axil_arready_sbd = 1'b1;
+        axil_awready_sbd = 1'b1;
+        axil_wready_sbd = 1'b1;
+
+        // Subordinate B Channel
+        axil_bresp_sbd = 2'b0;
+        axil_bvalid_sbd = 1'b0;
+
+        // Subordinate R Channel
+        axil_rdata_sbd = 32'b0;
+        axil_rvalid_sbd = 1'b0;
+        axil_rresp_sbd = 2'b0;
+
+        // Manager Interface Signals
+        axil_awaddr_mng = 32'b0;   
+        axil_awvalid_mng = 1'b0;
+        axil_wdata_mng = 32'b0;
+        axil_wvalid_mng = 1'b0;
+        axil_araddr_mng = 32'b0;  
+        axil_arvalid_mng = 1'b0;   
+
+        // Manager B Channel
+        axil_bready_mng = 1'b0;
+        axil_rready_mng = 1'b0;
+
+        // Default Save value of the Registers
+        next_read_address = read_address;
+        next_write_address = write_address;
+        next_write_data = write_data;
+        next_index = index;
+        next_tag = tag;
+
+        case(state)
+        IDLE : begin
+
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b1;
+            axil_awready_sbd = 1'b1;
+            axil_wready_sbd = 1'b1;
+
+            // Registering Address
+            next_read_address = 0;
+            next_write_address = 0;
+            next_write_data = 0;
+
+            // Tag and Index
+            next_tag = 0;
+            next_index = 0;
+
+            if(axil_arready_sbd && axil_arvalid_sbd) begin // read address valid
+                
+                // Registering Address
+                next_read_address = axil_araddr_sbd;
+                next_write_address = 0;
+                next_write_data = 0;
+
+                // Tag and Index
+                next_tag = axil_araddr_sbd[31 : INDEX + OFFSET];
+                next_index = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+
+                // Reading DATA RAM
+                data_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                read_enable = 2'b11;
+
+                // Reading Tag RAM
+                tag_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                tag_read_enable = 2'b11;
+
+                // Reading Valid RAM
+                valid_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                valid_read_enable = 2'b11;
+
+                // Reading LRU RAM
+                lru_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                lru_read_enable = 1'b1;
+
+                // Reading the Dirty Bit RAM
+                dirty_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                dirty_read_enable = 2'b11;
+
+            end
+            else if(axil_awready_sbd && axil_awvalid_sbd && axil_wready_sbd && axil_wvalid_sbd) begin
+                
+                // Registering Address
+                next_read_address = 0;
+                next_write_address = axil_awaddr_sbd;
+                next_write_data = axil_wdata_sbd;
+
+                // Tag and Index
+                next_tag = axil_awaddr_sbd[31 : INDEX + OFFSET];
+                next_index = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+
+                // Reading DATA RAM
+                data_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                read_enable = 2'b11;
+
+                // Reading Tag RAM
+                tag_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                tag_read_enable = 2'b11;
+
+
+                // Reading Valid RAM
+                valid_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                valid_read_enable = 2'b11;
+
+                // Reading LRU RAM
+                lru_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                lru_read_enable = 1'b1;
+
+                // Reading the Dirty Bit RAM
+                dirty_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+                dirty_read_enable = 2'b11;
+                
+            end
+            else if(axil_awready_sbd && axil_awvalid_sbd) begin
+                
+                // Registering Address
+                next_read_address = 0;
+                next_write_address = axil_awaddr_sbd;
+                next_write_data = 0;
+
+                // Tag and Index
+                next_tag = axil_awaddr_sbd[31 : INDEX + OFFSET];
+                next_index = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
+
+            end
+        end
+        WAIT_FOR_DATA : begin
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b1;
+
+            // Reading DATA RAM
+            data_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
+            read_enable = 2'b11;
+
+            // Reading Tag RAM
+            tag_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
+            tag_read_enable = 2'b11;
+
+            // Reading Valid RAM
+            valid_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
+            valid_read_enable = 2'b11;
+
+            // Reading LRU RAM
+            lru_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
+            lru_read_enable = 1'b1;
+
+            // Reading the Dirty Bit RAM
+            dirty_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
+            dirty_read_enable = 2'b11;
+
+        end
+        READ : begin
+
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+            
+            if(valid_out[0] && tag == tag_out[0]) begin // Hit on Way 0
+                
+                // Set LRU
+                lru_addr = index;
+                lru_in = 1'b1;
+                lru_write_enable = 1'b1;
+
+                // Output Data
+                axil_rdata_sbd = data_out[0];
+                axil_rvalid_sbd = 1'b1;
+                axil_rresp_sbd = 2'b00;
+
+            end
+            else if(valid_out[1] && tag == tag_out[1]) begin // Hit on Way 1
+
+                // Set LRU
+                lru_addr = index;
+                lru_in = 1'b0;
+                lru_write_enable = 1'b1;
+
+                // Output Data
+                axil_rdata_sbd = data_out[1];
+                axil_rvalid_sbd = 1'b1;
+                axil_rresp_sbd = 2'b00;
+
+            end
+            else begin // Miss
+            end
+        end
+        WRITE : begin
+        end
+        MEM_READ_REQ : begin
+        end
+        MEM_AXI_RRESP : begin
+        end
+        MEM_WRITE_REQ : begin
+        end
+        MEM_AXI_BRESP : begin
+        end
+        READ_UPDATE : begin
+        end
+        WRITE_UPDATE : begin
+        end
+        MNG_RREADY : begin
+        end
+        MNG_BREADY : begin
+        end
+        endcase
+    end
 
 endmodule
