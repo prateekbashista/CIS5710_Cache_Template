@@ -366,9 +366,62 @@ output logic                axil_rready_mng     // Read Response Ready Out
             end
         end
         READ : begin
+            if(valid_out[0] && tag == tag_out[0]) begin // Hit on Way 0
+                
+                if(axil_rready_sbd && axil_rvalid_sbd) begin
+                    next_state = IDLE;
+                end
+                else begin
+                    next_state = READ;
+                end
+            end
+            else if(valid_out[1] && tag == tag_out[1]) begin // Hit on Way 1
+                
+                if(axil_rready_sbd && axil_rvalid_sbd) begin
+                    next_state = IDLE;
+                end
+                else begin
+                    next_state = READ;
+                end
+            end
+            else begin // Miss
 
+                if(dirty_out[lru_out]) begin // Check if the lru way dirty or clean
+                    next_state = MEM_WRITE_REQ;
+                end
+                else begin
+                    next_state = MEM_READ_REQ;
+                end
+            end
         end
         WRITE : begin
+            if(valid_out[0] && tag == tag_out[0]) begin // Hit on Way 0
+                
+                if(axil_bready_sbd && axil_bvalid_sbd) begin
+                    next_state = IDLE;
+                end
+                else begin
+                    next_state = WRITE;
+                end
+            end
+            else if(valid_out[1] && tag == tag_out[1]) begin // Hit on Way 1
+                
+                if(axil_bready_sbd && axil_bvalid_sbd) begin
+                    next_state = IDLE;
+                end
+                else begin
+                    next_state = WRITE;
+                end
+            end
+            else begin // Miss
+                
+                if(dirty_out[lru_out]) begin // Check if the lru way dirty or clean
+                    next_state = MEM_WRITE_REQ;
+                end
+                else begin
+                    next_state = MEM_READ_REQ;
+                end
+            end
         end
         MEM_READ_REQ : begin
         end
@@ -453,6 +506,19 @@ output logic                axil_rready_mng     // Read Response Ready Out
         end
     end
 
+    // LRU Location of Way
+    reg lru_way;
+    logic next_lru_way;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            lru_way <= 0;
+        end
+        else begin
+            lru_way <= next_lru_way;
+        end
+    end
+
 
 
     // State Datapath
@@ -492,6 +558,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
         next_write_data = write_data;
         next_index = index;
         next_tag = tag;
+        next_lru_way = lru_way;
 
         case(state)
         IDLE : begin
@@ -594,6 +661,9 @@ output logic                axil_rready_mng     // Read Response Ready Out
             axil_awready_sbd = 1'b0;
             axil_wready_sbd = 1'b1;
 
+            // Registering Data
+            next_write_data = axil_wdata_sbd;
+
             // Reading DATA RAM
             data_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
             read_enable = 2'b11;
@@ -621,6 +691,11 @@ output logic                axil_rready_mng     // Read Response Ready Out
             axil_arready_sbd = 1'b0;
             axil_awready_sbd = 1'b0;
             axil_wready_sbd = 1'b0;
+
+            // Re-Read the Valid, TAG and Data Banks Incase of Interface Not Ready
+            valid_addr = read_address[index]; valid_read_enable = 2'b11;
+            tag_addr = read_address[index]; tag_read_enable = 2'b11;
+            data_addr = read_address[index]; read_enable = 2'b11;
             
             if(valid_out[0] && tag == tag_out[0]) begin // Hit on Way 0
                 
@@ -649,9 +724,58 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
             end
             else begin // Miss
+                next_lru_way = lru_out;
             end
         end
         WRITE : begin
+
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+
+            // Re-Read the Valid, TAG and Data Banks Incase of Interface Not Ready
+            valid_addr = write_address[index]; valid_read_enable = 1'b1;
+            tag_addr = write_address[index]; tag_read_enable = 1'b1;
+            
+            
+            if(valid_out[0] && tag == tag_out[0]) begin // Hit on Way 0
+                
+                // Set LRU
+                lru_addr = index;
+                lru_in = 1'b1;
+                lru_write_enable = 1'b1;
+
+                //Write Data
+                data_addr = write_address[index]; 
+                write_enable[0] = 1'b1;
+                data_in[0] = write_data;
+
+                // Output Data
+                axil_bvalid_sbd = 1'b1;
+                axil_bresp_sbd = 2'b00;
+
+            end
+            else if(valid_out[1] && tag == tag_out[1]) begin // Hit on Way 1
+
+                // Set LRU
+                lru_addr = index;
+                lru_in = 1'b0;
+                lru_write_enable = 1'b1;
+
+                //Write Data
+                data_addr = write_address[index]; 
+                write_enable[1] = 1'b1;
+                data_in[1] = write_data;
+
+                // Output Data
+                axil_bvalid_sbd = 1'b1;
+                axil_bresp_sbd = 2'b00;
+
+            end
+            else begin // Miss
+                next_lru_way = lru_out;
+            end
         end
         MEM_READ_REQ : begin
         end
