@@ -86,7 +86,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
     states state, next_state;
 
     /*--------------------------------------------------------------------------
-        Calculation of the Tag, Index and Offset Bits
+        Tag, Index and Offset Bits
     --------------------------------------------------------------------------*/
     parameter integer BYTE_WIDTH = 8;
     parameter integer SIZE = 32768; // In Bytes -> 32 Kb Cache
@@ -424,21 +424,55 @@ output logic                axil_rready_mng     // Read Response Ready Out
             end
         end
         MEM_READ_REQ : begin
+            next_state = MEM_AXI_RRESP;
         end
         MEM_AXI_RRESP : begin
+            if(axil_rready_mng && axil_rvalid_mng) begin
+                if(r_w) begin
+                    next_state = WRITE_UPDATE;
+                end
+                else begin
+                    next_state = READ_UPDATE;
+                end
+            end
+            else begin
+                next_state = MEM_RRESP;
+            end
         end
         MEM_WRITE_REQ : begin
+            next_state = MEM_AXI_BRESP;
         end
         MEM_AXI_BRESP : begin
+
+            if(axil_bready_mng && axil_bvalid_mng) begin
+                next_state = MEM_READ_REQ;
+            end
+            else begin
+                next_state = MEM_AXI_BRESP;
+            end
         end
         READ_UPDATE : begin
+            next_state = MNG_RREADY;
         end
         WRITE_UPDATE : begin
+            next_state = MNG_BREADY;
         end
         MNG_RREADY : begin
+            if(axil_rready_sbd && axil_rvalid_sbd) begin
+                next_state = IDLE;
+            end
+            else begin
+                next_state = MNG_READY;
+            end
         end
         MNG_BREADY : begin
-        end
+            if(axil_bready_sbd && axil_bvalid_sbd) begin
+                next_state = IDLE;
+            end
+            else begin
+                next_state = MNG_READY;
+            end
+        end 
         endcase
     end
 
@@ -448,7 +482,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     always_ff @(posedge clk) begin
         if(!rst_n) begin
-            read_address <=  0;
+            read_address <= 0;
         end
         else begin
             read_address <= next_read_address;
@@ -519,6 +553,44 @@ output logic                axil_rready_mng     // Read Response Ready Out
         end
     end
 
+    // Read/Write Mode Flag
+    reg r_w;
+    logic next_r_w;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            r_w <= 0;
+        end
+        else begin
+            r_w <= next_r_w;
+        end
+    end
+
+    // Write Back Data
+    reg [31:0] writeback_data;
+    logic [31:0] next_writeback_data;
+
+    always_ff @( posedge clk ) begin
+        if(!rst_n) begin
+            writeback_data <= 0;
+        end
+        else begin
+            writeback_data <= next_writeback_data;
+        end
+    end
+
+    // Fetched Data from Memory
+    reg [31:0] fetched_data;
+    logic [31:0] next_fetched_data;
+
+    always_ff @( posedge clk ) begin
+        if(!rst_n) begin
+            fetched_data <= 0;
+        end
+        else begin
+            fetched_data <= next_fetched_data;
+        end
+    end
 
 
     // State Datapath
@@ -559,6 +631,9 @@ output logic                axil_rready_mng     // Read Response Ready Out
         next_index = index;
         next_tag = tag;
         next_lru_way = lru_way;
+        next_r_w = r_w;
+        next_fetched_data = fetched_data;
+        next_writeback_data = writeback_data;
 
         case(state)
         IDLE : begin
@@ -579,6 +654,9 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
             if(axil_arready_sbd && axil_arvalid_sbd) begin // read address valid
                 
+                // Read/Write Mode
+                next_r_w = 1'b0;
+
                 // Registering Address
                 next_read_address = axil_araddr_sbd;
                 next_write_address = 0;
@@ -611,6 +689,9 @@ output logic                axil_rready_mng     // Read Response Ready Out
             end
             else if(axil_awready_sbd && axil_awvalid_sbd && axil_wready_sbd && axil_wvalid_sbd) begin
                 
+                // Read/Write Mode
+                next_r_w = 1'b1;
+
                 // Registering Address
                 next_read_address = 0;
                 next_write_address = axil_awaddr_sbd;
@@ -644,6 +725,9 @@ output logic                axil_rready_mng     // Read Response Ready Out
             end
             else if(axil_awready_sbd && axil_awvalid_sbd) begin
                 
+                // Read/Write Mode
+                next_r_w = 1'b1;
+
                 // Registering Address
                 next_read_address = 0;
                 next_write_address = axil_awaddr_sbd;
@@ -693,9 +777,12 @@ output logic                axil_rready_mng     // Read Response Ready Out
             axil_wready_sbd = 1'b0;
 
             // Re-Read the Valid, TAG and Data Banks Incase of Interface Not Ready
-            valid_addr = read_address[index]; valid_read_enable = 2'b11;
-            tag_addr = read_address[index]; tag_read_enable = 2'b11;
-            data_addr = read_address[index]; read_enable = 2'b11;
+            valid_addr = index; valid_read_enable = 2'b11;
+            tag_addr = index; tag_read_enable = 2'b11;
+            data_addr = index; read_enable = 2'b11;
+
+            // Registering LRU Data incase of Miss
+            next_writeback_data = data_out[lru_out];
             
             if(valid_out[0] && tag == tag_out[0]) begin // Hit on Way 0
                 
@@ -735,10 +822,12 @@ output logic                axil_rready_mng     // Read Response Ready Out
             axil_wready_sbd = 1'b0;
 
             // Re-Read the Valid, TAG and Data Banks Incase of Interface Not Ready
-            valid_addr = write_address[index]; valid_read_enable = 1'b1;
-            tag_addr = write_address[index]; tag_read_enable = 1'b1;
-            
-            
+            valid_addr = index; valid_read_enable = 1'b1;
+            tag_addr = index; tag_read_enable = 1'b1;
+
+            // Registering LRU Data incase of miss
+            next_writeback_data = data_out[lru_out];
+                        
             if(valid_out[0] && tag == tag_out[0]) begin // Hit on Way 0
                 
                 // Set LRU
@@ -747,7 +836,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
                 lru_write_enable = 1'b1;
 
                 //Write Data
-                data_addr = write_address[index]; 
+                data_addr = index; 
                 write_enable[0] = 1'b1;
                 data_in[0] = write_data;
 
@@ -764,7 +853,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
                 lru_write_enable = 1'b1;
 
                 //Write Data
-                data_addr = write_address[index]; 
+                data_addr = index; 
                 write_enable[1] = 1'b1;
                 data_in[1] = write_data;
 
@@ -778,20 +867,155 @@ output logic                axil_rready_mng     // Read Response Ready Out
             end
         end
         MEM_READ_REQ : begin
+
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+
+            // Send Read Request to Memory
+            axil_araddr_mng = {tag,index,2'b00};
+            axil_arvalid_mng = 1'b1;
+            
         end
         MEM_AXI_RRESP : begin
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+
+            // Send Read Request to Memory
+            axil_araddr_mng = {tag,index,2'b00};
+            axil_arvalid_mng = 1'b1;
+
+            //Ready to recieve response
+            axil_rready_mng = 1'b1;
+
+            if(axil_rready_mng && axil_rvalid_mng) begin
+                //register fetched data
+                next_fetched_data = axil_rdata_mng;
+            end
+            else begin
+                next_fetched_data = fetched_data;
+            end
         end
         MEM_WRITE_REQ : begin
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+
+            // Send Write Request to Memory
+            axil_awaddr_mng = {tag,index,2'b00};
+            axil_awvalid_mng = 1'b1;
+
+            //Send Write Data to memory
+            axil_wdata_mng = writeback_data;
+            axil_wvalid_mng = 1'b1;
         end
         MEM_AXI_BRESP : begin
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+
+            // Send Write Request to Memory
+            axil_awaddr_mng = {tag,index,2'b00};
+            axil_awvalid_mng = 1'b1;
+
+            //Send Write Data to memory
+            axil_wdata_mng = writeback_data;
+            axil_wvalid_mng = 1'b1;
+
+             //Ready to recieve response
+            axil_bready_mng = 1'b1;
+
         end
         READ_UPDATE : begin
+
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+
+            // Tag Update
+            tag_addr = index;
+            tag_write_enable[lru_way] = 1'b1;
+            tag_in[lru_way] = tag;
+
+            // Valid Update
+            valid_addr = index;
+            valid_write_enable[lru_way] = 1'b1;
+            valid_in[lru_way] = 1'b1;
+
+            // Dirty Bit Update
+            dirty_addr = index;
+            dirty_write_enable[lru_way] = 1'b1;
+            dirty_in[lru_way] = 1'b0;
+
+            // LRU Update
+            lru_addr = index;
+            lru_write_enable = 1'b1;
+            lru_in = ~lru_way;
+
+            // Data RAM Update
+            data_addr = index;
+            write_enable[lru_way] = 1'b1;
+            data_in[lru_way] = fetched_data;
+
+            // Data on Output Bus
+            axil_rdata_sbd = fetched_data;
+            axil_rvalid_sbd = 1'b1;
+            axil_rresp_sbd = 2'b0;
+
         end
         WRITE_UPDATE : begin
+
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+
+            // Tag Update
+            tag_addr = index;
+            tag_write_enable[lru_way] = 1'b1;
+            tag_in[lru_way] = tag;
+
+            // Valid Update
+            valid_addr = index;
+            valid_write_enable[lru_way] = 1'b1;
+            valid_in[lru_way] = 1'b1;
+
+            // Dirty Bit Update
+            dirty_addr = index;
+            dirty_write_enable[lru_way] = 1'b1;
+            dirty_in[lru_way] = 1'b1;
+
+            // LRU Update
+            lru_addr = index;
+            lru_write_enable = 1'b1;
+            lru_in = ~lru_way;
+
+            // Data RAM Update
+            data_addr = index;
+            write_enable[lru_way] = 1'b1;
+            data_in[lru_way] = write_data;
+
+            // Data on Output Bus
+            axil_bvalid_sbd = 1'b1;
+            axil_bresp_sbd = 2'b00;
+            
         end
         MNG_RREADY : begin
+            // Data on Output Bus
+            axil_rdata_sbd = fetched_data;
+            axil_rvalid_sbd = 1'b1;
+            axil_rresp_sbd = 2'b00;
         end
         MNG_BREADY : begin
+            // Data on Output Bus
+            axil_bvalid_sbd = 1'b1;
+            axil_bresp_sbd = 2'b00;
         end
         endcase
     end
