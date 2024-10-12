@@ -448,7 +448,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     always_ff @(posedge clk) begin
         if(!rst_n) begin
-            read_address <= 0;
+            read_address <=  0;
         end
         else begin
             read_address <= next_read_address;
