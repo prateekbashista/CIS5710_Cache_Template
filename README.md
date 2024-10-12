@@ -1,4 +1,4 @@
-# CIS5710_Cache_Tempelate
+# CIS5710_Cache_Template
 Current Specifications of the Cache :
 - Hardcoded Parameters for the Cache
 - 2 Way Set Associativity
