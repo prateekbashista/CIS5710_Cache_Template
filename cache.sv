@@ -436,7 +436,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
                 end
             end
             else begin
-                next_state = MEM_RRESP;
+                next_state = MEM_AXI_RRESP;
             end
         end
         MEM_WRITE_REQ : begin
@@ -462,7 +462,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
                 next_state = IDLE;
             end
             else begin
-                next_state = MNG_READY;
+                next_state = MNG_RREADY;
             end
         end
         MNG_BREADY : begin
@@ -470,7 +470,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
                 next_state = IDLE;
             end
             else begin
-                next_state = MNG_READY;
+                next_state = MNG_BREADY;
             end
         end 
         endcase
