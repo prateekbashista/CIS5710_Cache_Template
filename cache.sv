@@ -326,7 +326,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
         .DATA_WIDTH(1),
         .ADDR_WIDTH(INDEX)
     )
-    valid_ram_1
+    dirty_ram_1
     (
         .clk(clk),              
         .addr(dirty_addr),       

@@ -144,7 +144,7 @@
 - valid_ram_1: sram
 - lru_ram: sram
 - dirty_ram_0: sram
-- valid_ram_1: sram
+- dirty_ram_1: sram
 
 ## State machines
 
