@@ -1,0 +1,34 @@
+Vivado Simulator v2021.2
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: /tools/Xilinx/Vivado/2021.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_11 -L uvm -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot AXI_GPIO_tb_behav xil_defaultlib.AXI_GPIO_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv:669]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv:670]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv:671]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xilinx_vip.axi_vip_pkg
+Compiling package xilinx_vip.xil_common_vip_pkg
+Compiling package std.std
+Compiling package xilinx_vip.axi4stream_vip_pkg
+Compiling module xilinx_vip.axi_vip_axi4pc(WDATA_WIDTH=32,RD...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=2,C_AX...
+Compiling module axi_vip_v1_1_11.axi_vip_v1_1_11_top(C_AXI_PROTOC...
+Compiling module xil_defaultlib.design_1_axi_vip_0_0
+Compiling module xil_defaultlib.design_1_axi_vip_1_0
+Compiling module xil_defaultlib.sram
+Compiling module xil_defaultlib.sram(DATA_WIDTH=26)
+Compiling module xil_defaultlib.sram(DATA_WIDTH=1)
+Compiling module xil_defaultlib.cache_default
+Compiling module xil_defaultlib.vivado_cache_wrapper
+Compiling module xil_defaultlib.design_1_vivado_cache_wrapper_0_...
+Compiling module xil_defaultlib.design_1
+Compiling module xil_defaultlib.design_1_wrapper
+Compiling module xil_defaultlib.AXI_GPIO_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot AXI_GPIO_tb_behav

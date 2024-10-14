@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/memory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/mem_verif.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_tb

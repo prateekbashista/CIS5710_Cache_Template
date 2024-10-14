@@ -1,0 +1,245 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Sun Oct 13 12:49:30 2024
+# Process ID: 1043582
+# Current directory: /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj
+# Command line: vivado
+# Log file: /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/vivado.log
+# Journal file: /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/vivado.jou
+# Running On: lywong-thin, OS: Linux, CPU Frequency: 3591.560 MHz, CPU Physical cores: 8, Host memory: 33386 MB
+#-----------------------------------------------------------
+start_gui
+create_project cache_test /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test -part xcu280-fsvh2892-2L-e
+set_property board_part xilinx.com:au280:part0:1.1 [current_project]
+add_files -norecurse -scan_for_includes {/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv /mnt/share/home/bashista/CIS5710_Cache_Template/memory.sv /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_cache_wrapper.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source vivado_cache_wrapper.tcl
+create_bd_design "design_1"
+update_compile_order -fileset sources_1
+create_bd_cell -type module -reference vivado_cache_wrapper vivado_cache_wrapper_0
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vip:1.1 axi_vip_0
+endgroup
+set_property location {0.5 -99 -181} [get_bd_cells axi_vip_0]
+set_property location {1.5 210 -222} [get_bd_cells vivado_cache_wrapper_0]
+set_property location {2 141 -99} [get_bd_cells vivado_cache_wrapper_0]
+set_property location {1.5 124 -50} [get_bd_cells vivado_cache_wrapper_0]
+set_property location {0.5 -225 -157} [get_bd_cells axi_vip_0]
+set_property location {2 100 -50} [get_bd_cells vivado_cache_wrapper_0]
+set_property location {1.5 37 -51} [get_bd_cells vivado_cache_wrapper_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vip:1.1 axi_vip_1
+endgroup
+set_property location {3 342 -33} [get_bd_cells axi_vip_1]
+set_property -dict [list CONFIG.PROTOCOL.VALUE_SRC USER CONFIG.HAS_WSTRB.VALUE_SRC USER CONFIG.HAS_PROT.VALUE_SRC USER] [get_bd_cells axi_vip_1]
+set_property -dict [list CONFIG.PROTOCOL {AXI4LITE} CONFIG.INTERFACE_MODE {SLAVE} CONFIG.HAS_PROT {0} CONFIG.HAS_WSTRB {0} CONFIG.HAS_ARESETN {1}] [get_bd_cells axi_vip_1]
+set_property -dict [list CONFIG.HAS_PROT.VALUE_SRC USER CONFIG.HAS_WSTRB.VALUE_SRC USER CONFIG.PROTOCOL.VALUE_SRC USER] [get_bd_cells axi_vip_0]
+set_property -dict [list CONFIG.PROTOCOL {AXI4LITE} CONFIG.INTERFACE_MODE {MASTER} CONFIG.HAS_PROT {0} CONFIG.HAS_WSTRB {0}] [get_bd_cells axi_vip_0]
+set_property location {2 54 -95} [get_bd_cells vivado_cache_wrapper_0]
+connect_bd_intf_net [get_bd_intf_pins axi_vip_0/M_AXI] [get_bd_intf_pins vivado_cache_wrapper_0/axil_sbd]
+connect_bd_intf_net [get_bd_intf_pins vivado_cache_wrapper_0/axil_mng] [get_bd_intf_pins axi_vip_1/S_AXI]
+startgroup
+apply_bd_automation -rule xilinx.com:bd_rule:clkrst -config { Clk {New Clocking Wizard} Freq {100} Ref_Clk0 {} Ref_Clk1 {} Ref_Clk2 {}}  [get_bd_pins axi_vip_0/aclk]
+apply_bd_automation -rule xilinx.com:bd_rule:clkrst -config { Clk {New Clocking Wizard} Freq {100} Ref_Clk0 {} Ref_Clk1 {} Ref_Clk2 {}}  [get_bd_pins axi_vip_1/aclk]
+endgroup
+startgroup
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Clk {New External Port} Manual_Source {Auto}}  [get_bd_pins clk_wiz/clk_in1]
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Board_Interface {resetn ( FPGA Resetn ) } Manual_Source {New External Port (ACTIVE_HIGH)}}  [get_bd_pins clk_wiz/reset]
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Clk {New External Port} Manual_Source {Auto}}  [get_bd_pins clk_wiz_1/clk_in1]
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Board_Interface {resetn ( FPGA Resetn ) } Manual_Source {New External Port (ACTIVE_HIGH)}}  [get_bd_pins clk_wiz_1/reset]
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Board_Interface {resetn ( FPGA Resetn ) } Manual_Source {Auto}}  [get_bd_pins rst_clk_wiz_1_100M/ext_reset_in]
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Board_Interface {resetn ( FPGA Resetn ) } Manual_Source {Auto}}  [get_bd_pins rst_clk_wiz_100M/ext_reset_in]
+endgroup
+delete_bd_objs [get_bd_nets clk_wiz_locked] [get_bd_nets rst_clk_wiz_100M_peripheral_aresetn] [get_bd_cells rst_clk_wiz_100M]
+delete_bd_objs [get_bd_nets resetn_1] [get_bd_nets resetn_inv_0_Res] [get_bd_cells resetn_inv_0]
+delete_bd_objs [get_bd_nets resetn_0_1] [get_bd_nets resetn_inv_1_Res] [get_bd_cells resetn_inv_1]
+delete_bd_objs [get_bd_nets resetn_0_1_1] [get_bd_nets clk_wiz_1_locked] [get_bd_nets rst_clk_wiz_1_100M_peripheral_aresetn] [get_bd_cells rst_clk_wiz_1_100M]
+delete_bd_objs [get_bd_nets clk_100MHz_1_1] [get_bd_nets clk_wiz_1_clk_out1] [get_bd_cells clk_wiz_1]
+delete_bd_objs [get_bd_ports resetn]
+delete_bd_objs [get_bd_nets clk_100MHz_1] [get_bd_cells clk_wiz]
+delete_bd_objs [get_bd_ports clk_100MHz]
+delete_bd_objs [get_bd_ports resetn_0_1]
+delete_bd_objs [get_bd_ports resetn_0]
+delete_bd_objs [get_bd_ports clk_100MHz_1]
+set_property location {1.5 237 -190} [get_bd_cells axi_vip_0]
+connect_bd_net [get_bd_pins axi_vip_1/aclk] [get_bd_pins axi_vip_0/aclk]
+connect_bd_net [get_bd_pins axi_vip_0/aresetn] [get_bd_pins vivado_cache_wrapper_0/rst_n]
+connect_bd_net [get_bd_pins axi_vip_1/aresetn] [get_bd_pins axi_vip_0/aresetn]
+create_bd_port -dir I -type clk -freq_hz 100000000 CLK
+connect_bd_net [get_bd_ports CLK] [get_bd_pins axi_vip_0/aclk]
+startgroup
+create_bd_port -dir I -type rst RST
+endgroup
+connect_bd_net [get_bd_ports RST] [get_bd_pins axi_vip_0/aresetn]
+save_bd_design
+generate_target all [get_files  /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd]
+catch { config_ip_cache -export [get_ips -all design_1_vivado_cache_wrapper_0_0] }
+catch { config_ip_cache -export [get_ips -all design_1_axi_vip_0_0] }
+catch { config_ip_cache -export [get_ips -all design_1_axi_vip_1_0] }
+export_ip_user_files -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd]
+launch_runs design_1_vivado_cache_wrapper_0_0_synth_1 design_1_axi_vip_0_0_synth_1 design_1_axi_vip_1_0_synth_1 -jobs 8
+wait_on_run design_1_vivado_cache_wrapper_0_0_synth_1
+wait_on_run design_1_axi_vip_0_0_synth_1
+wait_on_run design_1_axi_vip_1_0_synth_1
+export_simulation -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -directory /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/sim_scripts -ip_user_files_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files -ipstatic_source_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/ipstatic -lib_map_path [list {modelsim=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/modelsim} {questa=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/questa} {xcelium=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/xcelium} {vcs=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/vcs} {riviera=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+make_wrapper -files [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -top
+add_files -norecurse /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+update_compile_order -fileset sources_1
+update_module_reference design_1_vivado_cache_wrapper_0_0
+generate_target all [get_files  /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd]
+catch { config_ip_cache -export [get_ips -all design_1_vivado_cache_wrapper_0_0] }
+export_ip_user_files -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd]
+launch_runs design_1_vivado_cache_wrapper_0_0_synth_1 -jobs 8
+wait_on_run design_1_vivado_cache_wrapper_0_0_synth_1
+export_simulation -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -directory /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/sim_scripts -ip_user_files_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files -ipstatic_source_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/ipstatic -lib_map_path [list {modelsim=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/modelsim} {questa=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/questa} {xcelium=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/xcelium} {vcs=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/vcs} {riviera=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+delete_bd_objs [get_bd_intf_nets axi_vip_0_M_AXI]
+set_property location {2 645 39} [get_bd_cells vivado_cache_wrapper_0]
+set_property location {0.5 88 20} [get_bd_cells axi_vip_0]
+update_module_reference design_1_vivado_cache_wrapper_0_0
+generate_target all [get_files  /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd]
+catch { config_ip_cache -export [get_ips -all design_1_vivado_cache_wrapper_0_0] }
+export_ip_user_files -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd]
+launch_runs design_1_vivado_cache_wrapper_0_0_synth_1 -jobs 8
+wait_on_run design_1_vivado_cache_wrapper_0_0_synth_1
+export_simulation -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -directory /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/sim_scripts -ip_user_files_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files -ipstatic_source_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/ipstatic -lib_map_path [list {modelsim=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/modelsim} {questa=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/questa} {xcelium=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/xcelium} {vcs=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/vcs} {riviera=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_araddr] [get_bd_pins vivado_cache_wrapper_0/axil_araddr_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_arready] [get_bd_pins vivado_cache_wrapper_0/axil_arready_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_arvalid] [get_bd_pins vivado_cache_wrapper_0/axil_arvalid_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_awaddr] [get_bd_pins vivado_cache_wrapper_0/axil_awaddr_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_awready] [get_bd_pins vivado_cache_wrapper_0/axil_awready_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_awvalid] [get_bd_pins vivado_cache_wrapper_0/axil_awvalid_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_bready] [get_bd_pins vivado_cache_wrapper_0/axil_bready_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_bresp] [get_bd_pins vivado_cache_wrapper_0/axil_bresp_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_bvalid] [get_bd_pins vivado_cache_wrapper_0/axil_bvalid_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_rdata] [get_bd_pins vivado_cache_wrapper_0/axil_rdata_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_rready] [get_bd_pins vivado_cache_wrapper_0/axil_rready_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_rresp] [get_bd_pins vivado_cache_wrapper_0/axil_rresp_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_rvalid] [get_bd_pins vivado_cache_wrapper_0/axil_rvalid_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_wdata] [get_bd_pins vivado_cache_wrapper_0/axil_wdata_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_wready] [get_bd_pins vivado_cache_wrapper_0/axil_wready_sbd]
+connect_bd_net [get_bd_pins axi_vip_0/m_axi_wvalid] [get_bd_pins vivado_cache_wrapper_0/axil_wvalid_sbd]
+save_bd_design
+generate_target all [get_files  /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd]
+export_ip_user_files -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd]
+export_simulation -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -directory /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/sim_scripts -ip_user_files_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files -ipstatic_source_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/ipstatic -lib_map_path [list {modelsim=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/modelsim} {questa=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/questa} {xcelium=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/xcelium} {vcs=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/vcs} {riviera=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+delete_bd_objs [get_bd_nets axi_vip_0_m_axi_arvalid] [get_bd_nets axi_vip_0_m_axi_wdata] [get_bd_nets vivado_cache_wrapper_0_axil_wready_sbd] [get_bd_nets axi_vip_0_m_axi_araddr] [get_bd_nets vivado_cache_wrapper_0_axil_arready_sbd] [get_bd_nets vivado_cache_wrapper_0_axil_awready_sbd] [get_bd_nets vivado_cache_wrapper_0_axil_rvalid_sbd] [get_bd_nets axi_vip_0_m_axi_awaddr] [get_bd_nets vivado_cache_wrapper_0_axil_rdata_sbd] [get_bd_nets axi_vip_0_m_axi_rready] [get_bd_nets vivado_cache_wrapper_0_axil_bvalid_sbd] [get_bd_nets vivado_cache_wrapper_0_axil_rresp_sbd] [get_bd_nets axi_vip_0_m_axi_bready] [get_bd_nets axi_vip_0_m_axi_wvalid]
+set_property location {1 59 25} [get_bd_cells axi_vip_0]
+connect_bd_intf_net [get_bd_intf_pins axi_vip_0/M_AXI] [get_bd_intf_pins vivado_cache_wrapper_0/axil_sbd]
+save_bd_design
+update_module_reference design_1_vivado_cache_wrapper_0_0
+delete_bd_objs [get_bd_nets axi_vip_0_m_axi_awvalid]
+delete_bd_objs [get_bd_nets vivado_cache_wrapper_0_axil_bresp_sbd]
+delete_bd_objs [get_bd_intf_nets axi_vip_0_M_AXI]
+connect_bd_intf_net [get_bd_intf_pins axi_vip_0/M_AXI] [get_bd_intf_pins vivado_cache_wrapper_0/axil_sbd]
+save_bd_design
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse -scan_for_includes /mnt/share/home/bashista/CIS5710_Cache_Template/cache_axi_verif.sv
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top AXI_GPIO_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+generate_target Simulation [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd]
+export_ip_user_files -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.srcs/sources_1/bd/design_1/design_1.bd] -directory /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/sim_scripts -ip_user_files_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files -ipstatic_source_dir /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/ipstatic -lib_map_path [list {modelsim=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/modelsim} {questa=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/questa} {xcelium=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/xcelium} {vcs=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/vcs} {riviera=/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+launch_simulation
+source AXI_GPIO_tb.tcl
+current_wave_config {Untitled 2}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/clk}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/rst_n}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_awaddr_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_awvalid_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_awready_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_wdata_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_wvalid_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_wready_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_bresp_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_bvalid_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_bready_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_araddr_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_arvalid_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_arready_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_rdata_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_rvalid_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_rresp_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_rready_sbd}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_awaddr_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_awvalid_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_awready_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_wdata_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_wvalid_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_wready_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_bresp_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_bvalid_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_bready_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_araddr_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_arvalid_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_arready_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_rdata_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_rresp_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_rvalid_mng}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/axil_rready_mng}} 
+save_wave_config {/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg}
+add_files -fileset sim_1 -norecurse /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+set_property xsim.view /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg [get_filesets sim_1]
+close_sim
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/state}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/next_state}} 
+restart
+run 2 us
+save_wave_config {/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+close_sim
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+restart
+run 2 us
+close_sim
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+close_sim
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/mem}} 
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/mem}} 
+close_sim
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+close_sim
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+current_wave_config {}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0}} 
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/mem}} 
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_1/mem}} 
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/tag_ram_0/mem}} 
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/tag_ram_1}} 
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/valid_ram_0}} 
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/valid_ram_1}} 
+restart
+run 2 us
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/clk}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/addr}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/re}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/data_out}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/data_in}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/we}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/data}} {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_0/mem}} 
+current_wave_config {AXI_GPIO_tb_behav.wcfg}
+add_wave {{/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/data_ram_1}} 
+restart
+run 2 us
+save_wave_config {/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg}
+close_sim
+launch_simulation
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+close_sim
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+close_sim
+launch_simulation
+open_wave_config /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/AXI_GPIO_tb_behav.wcfg
+source AXI_GPIO_tb.tcl
+run 2 us
+close_sim
+close_sim

@@ -1,5 +1,8 @@
 `timescale 1ns/1ps
 
+
+// Writes happen in same cycle, Reads are returned next cycle
+
 module sram
 #(
     parameter integer SIZE = 16,
@@ -8,6 +11,7 @@ module sram
 )
 (
     input                                   clk,        // System Clock
+    input                                   rst_n,      // System Reset
     input           [ADDR_WIDTH - 1 : 0]    addr,       // Read/Write Address from the Memory
     input                                   re,         // Read Enable
     output  logic   [DATA_WIDTH - 1 : 0]    data_out,   // Output from the Memory
@@ -15,26 +19,32 @@ module sram
     input                                   we          // Write Enable
 );
 
-    assert ($clog2(SIZE) == ADDR_WIDTH);
+    //assert ($clog2(SIZE) == ADDR_WIDTH);
 
     reg [DATA_WIDTH - 1 : 0] data;
     reg [DATA_WIDTH - 1 : 0] mem [SIZE];
 
     // Priority is given to the read
-    always @(posedge clk) begin
+    always_ff @(posedge clk) begin
         if(re) begin
             data <= mem[addr];
         end
     end
 
-    always @(posedge clk) begin
+    integer i;
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            for(i=0; i<SIZE; i = i+1) begin
+                mem[i] <= 0;
+            end
+        end
         if(we && !re) begin
            mem[addr] <= data_in;
         end 
     end
 
 
-    assign data_out = (re) ? data : 'hz;
+    assign data_out = data;
 
 
 endmodule

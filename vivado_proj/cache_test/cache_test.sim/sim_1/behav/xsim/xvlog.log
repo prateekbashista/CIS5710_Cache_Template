@@ -1,0 +1,7 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv:669]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv:670]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv:671]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/memory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sram

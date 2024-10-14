@@ -1,0 +1,305 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Sun Oct 13 13:41:36 2024
+# Process ID: 1054131
+# Current directory: /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.runs/design_1_axi_vip_1_0_synth_1
+# Command line: vivado -log design_1_axi_vip_1_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_axi_vip_1_0.tcl
+# Log file: /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.runs/design_1_axi_vip_1_0_synth_1/design_1_axi_vip_1_0.vds
+# Journal file: /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.runs/design_1_axi_vip_1_0_synth_1/vivado.jou
+# Running On: lywong-thin, OS: Linux, CPU Frequency: 3591.560 MHz, CPU Physical cores: 8, Host memory: 33386 MB
+#-----------------------------------------------------------
+source design_1_axi_vip_1_0.tcl -notrace
+Command: synth_design -top design_1_axi_vip_1_0 -part xcu280-fsvh2892-2L-e -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcu280'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcu280'
+INFO: [Device 21-403] Loading part xcu280-fsvh2892-2L-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 1054366
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 4175.605 ; gain = 285.762 ; free physical = 7964 ; free virtual = 14315
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_vip_1_0' [/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.gen/sources_1/bd/design_1/ip/design_1_axi_vip_1_0/synth/design_1_axi_vip_1_0.sv:58]
+INFO: [Synth 8-6157] synthesizing module 'axi_vip_v1_1_11_top' [/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.gen/sources_1/bd/design_1/ipshared/63b7/hdl/axi_vip_v1_1_vlsyn_rfs.sv:61]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vip_v1_1_11_top' (1#1) [/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.gen/sources_1/bd/design_1/ipshared/63b7/hdl/axi_vip_v1_1_vlsyn_rfs.sv:61]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_vip_1_0' (2#1) [/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.gen/sources_1/bd/design_1/ip/design_1_axi_vip_1_0/synth/design_1_axi_vip_1_0.sv:58]
+WARNING: [Synth 8-7129] Port aclk in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aclken in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aresetn in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awid[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[31] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[30] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[29] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[28] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[27] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[26] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[25] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[24] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[23] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[22] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[21] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[20] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[19] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[18] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[17] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[16] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[15] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[14] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[13] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[12] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[11] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[10] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[9] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[8] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[7] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[6] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[5] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[4] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[3] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[2] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[1] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awaddr[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awlen[7] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awlen[6] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awlen[5] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awlen[4] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awlen[3] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awlen[2] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awlen[1] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awlen[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awsize[2] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awsize[1] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awsize[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awburst[1] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awburst[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awlock[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awcache[3] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awcache[2] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awcache[1] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awcache[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[2] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[1] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awregion[3] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awregion[2] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awregion[1] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awregion[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awqos[3] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awqos[2] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awqos[1] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awqos[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awuser[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awvalid in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wid[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[31] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[30] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[29] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[28] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[27] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[26] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[25] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[24] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[23] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[22] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[21] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[20] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[19] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[18] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[17] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[16] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[15] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[14] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[13] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[12] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[11] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[10] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[9] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[8] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[7] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[6] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[5] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[4] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[3] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[2] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[1] in module axi_vip_v1_1_11_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wdata[0] in module axi_vip_v1_1_11_top is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 4222.574 ; gain = 332.730 ; free physical = 6450 ; free virtual = 12802
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 4240.387 ; gain = 350.543 ; free physical = 7406 ; free virtual = 13758
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 4240.387 ; gain = 350.543 ; free physical = 7402 ; free virtual = 13754
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4240.387 ; gain = 0.000 ; free physical = 7390 ; free virtual = 13743
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+WARNING: [Designutils 20-1758] instance inst wraps a black box. Constraint reading is skipped for elaborated designs in this case. Skipping constraint file '/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.gen/sources_1/bd/design_1/ip/design_1_axi_vip_1_0/design_1_axi_vip_1_0_ooc.xdc'.
+Parsing XDC File [/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.runs/design_1_axi_vip_1_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.runs/design_1_axi_vip_1_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 6326.043 ; gain = 0.000 ; free physical = 8057 ; free virtual = 14409
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 6329.012 ; gain = 2.969 ; free physical = 8057 ; free virtual = 14409
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 8176 ; free virtual = 14529
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcu280-fsvh2892-2L-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 8176 ; free virtual = 14529
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  /mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.runs/design_1_axi_vip_1_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 8256 ; free virtual = 14609
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 8296 ; free virtual = 14650
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 9024 (col length:94)
+BRAMs: 4032 (col length: RAMB18 288 RAMB36 144)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 8210 ; free virtual = 14571
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6888 ; free virtual = 13245
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6888 ; free virtual = 13245
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6875 ; free virtual = 13231
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6913 ; free virtual = 13269
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6913 ; free virtual = 13269
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6924 ; free virtual = 13280
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6924 ; free virtual = 13280
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6924 ; free virtual = 13280
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6924 ; free virtual = 13280
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++-+-----+------+
+| |Cell |Count |
++-+-----+------+
++-+-----+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 6924 ; free virtual = 13280
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 220 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 6329.012 ; gain = 350.543 ; free physical = 7001 ; free virtual = 13357
+Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 6329.012 ; gain = 2439.168 ; free physical = 7005 ; free virtual = 13361
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 6329.012 ; gain = 0.000 ; free physical = 7035 ; free virtual = 13391
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 6329.012 ; gain = 0.000 ; free physical = 9304 ; free virtual = 15660
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 9d390884
+INFO: [Common 17-83] Releasing license: Synthesis
+18 Infos, 102 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:34 . Memory (MB): peak = 6329.012 ; gain = 2916.715 ; free physical = 9466 ; free virtual = 15822
+INFO: [Common 17-1381] The checkpoint '/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.runs/design_1_axi_vip_1_0_synth_1/design_1_axi_vip_1_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_axi_vip_1_0, cache-ID = 75e32108b087bac2
+INFO: [Common 17-1381] The checkpoint '/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.runs/design_1_axi_vip_1_0_synth_1/design_1_axi_vip_1_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_axi_vip_1_0_utilization_synth.rpt -pb design_1_axi_vip_1_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Oct 13 13:42:27 2024...

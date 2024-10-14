@@ -1,0 +1,99 @@
+{
+	"version": "1.0",
+	"modules": {
+		"design_1": {
+			"proto_instances": {
+				"/axi_vip_0/M_AXI": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARADDR": { "actual": "m_axi_araddr"},
+						"ARESETN": { "actual": "aresetn"},
+						"ARREADY": { "actual": "m_axi_arready"},
+						"ARVALID": { "actual": "m_axi_arvalid"},
+						"AWADDR": { "actual": "m_axi_awaddr"},
+						"AWREADY": { "actual": "m_axi_awready"},
+						"AWVALID": { "actual": "m_axi_awvalid"},
+						"BREADY": { "actual": "m_axi_bready"},
+						"BRESP": { "actual": "m_axi_bresp"},
+						"BVALID": { "actual": "m_axi_bvalid"},
+						"RDATA": { "actual": "m_axi_rdata"},
+						"RREADY": { "actual": "m_axi_rready"},
+						"RRESP": { "actual": "m_axi_rresp"},
+						"RVALID": { "actual": "m_axi_rvalid"},
+						"WDATA": { "actual": "m_axi_wdata"},
+						"WREADY": { "actual": "m_axi_wready"},
+						"WVALID": { "actual": "m_axi_wvalid"}
+					}
+				},
+				"/axi_vip_1/S_AXI": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARADDR": { "actual": "s_axi_araddr"},
+						"ARESETN": { "actual": "aresetn"},
+						"ARREADY": { "actual": "s_axi_arready"},
+						"ARVALID": { "actual": "s_axi_arvalid"},
+						"AWADDR": { "actual": "s_axi_awaddr"},
+						"AWREADY": { "actual": "s_axi_awready"},
+						"AWVALID": { "actual": "s_axi_awvalid"},
+						"BREADY": { "actual": "s_axi_bready"},
+						"BRESP": { "actual": "s_axi_bresp"},
+						"BVALID": { "actual": "s_axi_bvalid"},
+						"RDATA": { "actual": "s_axi_rdata"},
+						"RREADY": { "actual": "s_axi_rready"},
+						"RRESP": { "actual": "s_axi_rresp"},
+						"RVALID": { "actual": "s_axi_rvalid"},
+						"WDATA": { "actual": "s_axi_wdata"},
+						"WREADY": { "actual": "s_axi_wready"},
+						"WVALID": { "actual": "s_axi_wvalid"}
+					}
+				},
+				"/vivado_cache_wrapper_0/axil_mng": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "clk"},
+						"ARADDR": { "actual": "axil_araddr_mng"},
+						"ARREADY": { "actual": "axil_arready_mng"},
+						"ARVALID": { "actual": "axil_arvalid_mng"},
+						"AWADDR": { "actual": "axil_awaddr_mng"},
+						"AWREADY": { "actual": "axil_awready_mng"},
+						"AWVALID": { "actual": "axil_awvalid_mng"},
+						"BREADY": { "actual": "axil_bready_mng"},
+						"BRESP": { "actual": "axil_bresp_mng"},
+						"BVALID": { "actual": "axil_bvalid_mng"},
+						"RDATA": { "actual": "axil_rdata_mng"},
+						"RREADY": { "actual": "axil_rready_mng"},
+						"RRESP": { "actual": "axil_rresp_mng"},
+						"RVALID": { "actual": "axil_rvalid_mng"},
+						"WDATA": { "actual": "axil_wdata_mng"},
+						"WREADY": { "actual": "axil_wready_mng"},
+						"WVALID": { "actual": "axil_wvalid_mng"}
+					}
+				},
+				"/vivado_cache_wrapper_0/axil_sbd": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "clk"},
+						"ARADDR": { "actual": "axil_araddr_sbd"},
+						"ARREADY": { "actual": "axil_arready_sbd"},
+						"ARVALID": { "actual": "axil_arvalid_sbd"},
+						"AWADDR": { "actual": "axil_awaddr_sbd"},
+						"AWREADY": { "actual": "axil_awready_sbd"},
+						"AWVALID": { "actual": "axil_awvalid_sbd"},
+						"BREADY": { "actual": "axil_bready_sbd"},
+						"BRESP": { "actual": "axil_bresp_sbd"},
+						"BVALID": { "actual": "axil_bvalid_sbd"},
+						"RDATA": { "actual": "axil_rdata_sbd"},
+						"RREADY": { "actual": "axil_rready_sbd"},
+						"RRESP": { "actual": "axil_rresp_sbd"},
+						"RVALID": { "actual": "axil_rvalid_sbd"},
+						"WDATA": { "actual": "axil_wdata_sbd"},
+						"WREADY": { "actual": "axil_wready_sbd"},
+						"WVALID": { "actual": "axil_wvalid_sbd"}
+					}
+				}
+			}
+		}
+	}
+}

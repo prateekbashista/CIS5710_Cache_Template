@@ -70,7 +70,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
 );
 
 
-    typedef enum logic [3:0] {  IDLE  = 4'h0,
+    typedef enum reg [3:0] {  IDLE  = 4'h0,
                                 WAIT_FOR_DATA = 4'h1,
                                 READ = 4'h2,
                                 WRITE = 4'h3,
@@ -85,11 +85,20 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     states state, next_state;
 
+    always_ff @( posedge clk ) begin : state_machine_driver
+        if(!rst_n) begin
+            state <= IDLE;
+        end
+        else begin
+            state <= next_state;
+        end
+    end
+
     /*--------------------------------------------------------------------------
         Tag, Index and Offset Bits
     --------------------------------------------------------------------------*/
     parameter integer BYTE_WIDTH = 8;
-    parameter integer SIZE = 32768; // In Bytes -> 32 Kb Cache
+    parameter integer SIZE = 128; // In Bytes -> 32 Kb Cache
     parameter integer BLOCK_SIZE = 1;
     parameter integer WAYS = 2;
 
@@ -137,17 +146,18 @@ output logic                axil_rready_mng     // Read Response Ready Out
     logic read_enable[2];               // Array, for each Bank Read Enable
     logic [31 : 0] data_out[2];         // Output from the RAM
     logic [31 : 0] data_in[2];          // Data to be written in RAM
-    logic write_enable[2];              // Write-Enable
+    reg write_enable[2];              // Write-Enable
 
     sram
     #(
-        .SIZE(4096),
+        .SIZE(/*4096*/16),
         .DATA_WIDTH(32),
         .ADDR_WIDTH(INDEX)
     )
     data_ram_0
     (
-        .clk(clk),              
+        .clk(clk),   
+        .rst_n(rst_n),          
         .addr(data_addr),       
         .re(read_enable[0]),                  
         .data_out(data_out[0]),            
@@ -157,13 +167,14 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     sram
     #(
-        .SIZE(4096),
+        .SIZE(/*4096*/16),
         .DATA_WIDTH(32),
         .ADDR_WIDTH(INDEX)
     )
     data_ram_1
     (
-        .clk(clk),        
+        .clk(clk),   
+        .rst_n(rst_n),       
         .addr(data_addr),       
         .re(read_enable[1]),         
         .data_out(data_out[1]),   
@@ -187,14 +198,15 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     sram
     #(
-        .SIZE(4096),
+        .SIZE(/*4096*/16),
         .DATA_WIDTH(TAG_SIZE),
         .ADDR_WIDTH(INDEX)
     )
     tag_ram_0
     (
         .clk(clk),              
-        .addr(tag_addr),       
+        .addr(tag_addr),    
+        .rst_n(rst_n),     
         .re(tag_read_enable[0]),                  
         .data_out(tag_out[0]),            
         .data_in(tag_in[0]),             
@@ -203,13 +215,14 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     sram
     #(
-        .SIZE(4096),
+        .SIZE(/*4096*/16),
         .DATA_WIDTH(TAG_SIZE),
         .ADDR_WIDTH(INDEX)
     )
     tag_ram_1
     (
-        .clk(clk),              
+        .clk(clk),   
+        .rst_n(rst_n),              
         .addr(tag_addr),       
         .re(tag_read_enable[1]),                  
         .data_out(tag_out[1]),            
@@ -231,13 +244,14 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     sram
     #(
-        .SIZE(4096),
+        .SIZE(/*4096*/16),
         .DATA_WIDTH(1),
         .ADDR_WIDTH(INDEX)
     )
     valid_ram_0
     (
-        .clk(clk),              
+        .clk(clk),  
+        .rst_n(rst_n),               
         .addr(valid_addr),       
         .re(valid_read_enable[0]),                  
         .data_out(valid_out[0]),            
@@ -247,13 +261,14 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     sram
     #(
-        .SIZE(4096),
+        .SIZE(/*4096*/16),
         .DATA_WIDTH(1),
         .ADDR_WIDTH(INDEX)
     )
     valid_ram_1
     (
-        .clk(clk),              
+        .clk(clk),    
+        .rst_n(rst_n),             
         .addr(valid_addr),       
         .re(valid_read_enable[1]),                  
         .data_out(valid_out[1]),            
@@ -277,13 +292,14 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     sram
     #(
-        .SIZE(4096),
+        .SIZE(/*4096*/16),
         .DATA_WIDTH(1),
         .ADDR_WIDTH(INDEX)
     )
     lru_ram
     (
-        .clk(clk),              
+        .clk(clk), 
+        .rst_n(rst_n),            
         .addr(lru_addr),       
         .re(lru_read_enable),                  
         .data_out(lru_out),            
@@ -306,13 +322,14 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     sram
     #(
-        .SIZE(4096),
+        .SIZE(/*4096*/16),
         .DATA_WIDTH(1),
         .ADDR_WIDTH(INDEX)
     )
     dirty_ram_0
     (
-        .clk(clk),              
+        .clk(clk),     
+        .rst_n(rst_n),         
         .addr(dirty_addr),       
         .re(dirty_read_enable[0]),                  
         .data_out(dirty_out[0]),            
@@ -322,13 +339,14 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
     sram
     #(
-        .SIZE(4096),
+        .SIZE(/*4096*/16),
         .DATA_WIDTH(1),
         .ADDR_WIDTH(INDEX)
     )
     dirty_ram_1
     (
-        .clk(clk),              
+        .clk(clk),     
+        .rst_n(rst_n),         
         .addr(dirty_addr),       
         .re(dirty_read_enable[1]),                  
         .data_out(dirty_out[1]),            
@@ -336,6 +354,123 @@ output logic                axil_rready_mng     // Read Response Ready Out
         .we(dirty_write_enable[1])                  
     );
     //---------------------------------------------------------------------------
+
+    //Address and Data Register
+    reg [31:0] read_address;
+    logic [31:0] next_read_address;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            read_address <= 0;
+        end
+        else begin
+            read_address <= next_read_address;
+        end
+    end
+
+
+    reg [31:0] write_address;
+    logic [31:0] next_write_address;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            write_address <= 0;
+        end
+        else begin
+            write_address <= next_write_address;
+        end
+    end
+
+    reg [31:0] write_data;
+    logic [31:0] next_write_data;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            write_data <= 0;
+        end
+        else begin
+            write_data <= next_write_data;
+        end
+    end
+
+
+    // Tag and Index Storage Registers
+    reg [TAG_SIZE - 1 : 0] tag;
+    logic [TAG_SIZE - 1 : 0] next_tag;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            tag <= 0;
+        end
+        else begin
+            tag <= next_tag;
+        end
+    end
+
+    reg [INDEX - 1 : 0] index;
+    logic [INDEX - 1 : 0] next_index;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            index <= 0;
+        end
+        else begin
+            index <= next_index;
+        end
+    end
+
+    // LRU Location of Way
+    reg lru_way;
+    logic next_lru_way;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            lru_way <= 0;
+        end
+        else begin
+            lru_way <= next_lru_way;
+        end
+    end
+
+    // Read/Write Mode Flag
+    reg r_w;
+    logic next_r_w;
+
+    always_ff @(posedge clk) begin
+        if(!rst_n) begin
+            r_w <= 0;
+        end
+        else begin
+            r_w <= next_r_w;
+        end
+    end
+
+    // Write Back Data
+    reg [31:0] writeback_data;
+    logic [31:0] next_writeback_data;
+
+    always_ff @( posedge clk ) begin
+        if(!rst_n) begin
+            writeback_data <= 0;
+        end
+        else begin
+            writeback_data <= next_writeback_data;
+        end
+    end
+
+    // Fetched Data from Memory
+    reg [31:0] fetched_data;
+    logic [31:0] next_fetched_data;
+
+    always_ff @( posedge clk ) begin
+        if(!rst_n) begin
+            fetched_data <= 0;
+        end
+        else begin
+            fetched_data <= next_fetched_data;
+        end
+    end
+
 
 
     // AXI-Lite State Machine
@@ -476,128 +611,13 @@ output logic                axil_rready_mng     // Read Response Ready Out
         endcase
     end
 
-    //Address and Data Register
-    reg [31:0] read_address;
-    logic [31:0] next_read_address;
-
-    always_ff @(posedge clk) begin
-        if(!rst_n) begin
-            read_address <= 0;
-        end
-        else begin
-            read_address <= next_read_address;
-        end
-    end
-
-
-    reg [31:0] write_address;
-    logic [31:0] next_write_address;
-
-    always_ff @(posedge clk) begin
-        if(!rst_n) begin
-            write_address <= 0;
-        end
-        else begin
-            write_address <= next_write_address;
-        end
-    end
-
-    reg [31:0] write_data;
-    logic [31:0] next_write_data;
-
-    always_ff @(posedge clk) begin
-        if(!rst_n) begin
-            write_data <= 0;
-        end
-        else begin
-            write_data <= next_write_data;
-        end
-    end
-
-
-    // Tag and Index Storage Registers
-    reg [TAG_SIZE - 1 : 0] tag;
-    logic [TAG_SIZE - 1 : 0] next_tag;
-
-    always_ff @(posedge clk) begin
-        if(!rst_n) begin
-            tag <= 0;
-        end
-        else begin
-            tag <= next_tag;
-        end
-    end
-
-    reg [INDEX - 1 : 0] index;
-    logic [INDEX - 1 : 0] next_index;
-
-    always_ff @(posedge clk) begin
-        if(!rst_n) begin
-            index <= 0;
-        end
-        else begin
-            index <= next_index;
-        end
-    end
-
-    // LRU Location of Way
-    reg lru_way;
-    logic next_lru_way;
-
-    always_ff @(posedge clk) begin
-        if(!rst_n) begin
-            lru_way <= 0;
-        end
-        else begin
-            lru_way <= next_lru_way;
-        end
-    end
-
-    // Read/Write Mode Flag
-    reg r_w;
-    logic next_r_w;
-
-    always_ff @(posedge clk) begin
-        if(!rst_n) begin
-            r_w <= 0;
-        end
-        else begin
-            r_w <= next_r_w;
-        end
-    end
-
-    // Write Back Data
-    reg [31:0] writeback_data;
-    logic [31:0] next_writeback_data;
-
-    always_ff @( posedge clk ) begin
-        if(!rst_n) begin
-            writeback_data <= 0;
-        end
-        else begin
-            writeback_data <= next_writeback_data;
-        end
-    end
-
-    // Fetched Data from Memory
-    reg [31:0] fetched_data;
-    logic [31:0] next_fetched_data;
-
-    always_ff @( posedge clk ) begin
-        if(!rst_n) begin
-            fetched_data <= 0;
-        end
-        else begin
-            fetched_data <= next_fetched_data;
-        end
-    end
 
 
     // State Datapath
     always_comb begin : state_datapath
 
         // Defaut State of the Signal
-        
+
         // Subordinate Interface Ready Signals
         axil_arready_sbd = 1'b1;
         axil_awready_sbd = 1'b1;
@@ -623,6 +643,38 @@ output logic                axil_rready_mng     // Read Response Ready Out
         // Manager B Channel
         axil_bready_mng = 1'b0;
         axil_rready_mng = 1'b0;
+
+        // Default Values of Memory Inputs
+        
+        // Data RAM
+        data_addr = 0;    
+        read_enable = {0,0};              
+        data_in = {0,0};
+        write_enable = {0,0}; 
+
+        // Tag RAM
+        tag_addr = 0;    
+        tag_read_enable = {0,0};              
+        tag_in = {0,0};
+        tag_write_enable = {0,0}; 
+
+        // Valid RAM
+        valid_addr = 0;    
+        valid_read_enable = {0,0};              
+        valid_in = {0,0};
+        valid_write_enable = {0,0}; 
+
+        // LRU RAM
+        lru_addr = 0;    
+        lru_read_enable = {0,0};              
+        lru_in = {0,0};
+        lru_write_enable = {0,0}; 
+
+        // Dirty Bit RAM
+        dirty_addr = 0;    
+        dirty_read_enable = {0,0};              
+        dirty_in = {0,0};
+        dirty_write_enable = {0,0};
 
         // Default Save value of the Registers
         next_read_address = read_address;
@@ -668,15 +720,15 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
                 // Reading DATA RAM
                 data_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
-                read_enable = 2'b11;
+                read_enable = {1'b1,1'b1};
 
                 // Reading Tag RAM
                 tag_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
-                tag_read_enable = 2'b11;
+                tag_read_enable = {1'b1,1'b1};
 
                 // Reading Valid RAM
                 valid_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
-                valid_read_enable = 2'b11;
+                valid_read_enable = {1'b1,1'b1};
 
                 // Reading LRU RAM
                 lru_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
@@ -684,7 +736,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
                 // Reading the Dirty Bit RAM
                 dirty_addr = axil_araddr_sbd[INDEX + OFFSET - 1 : OFFSET];
-                dirty_read_enable = 2'b11;
+                dirty_read_enable = {1'b1,1'b1};
 
             end
             else if(axil_awready_sbd && axil_awvalid_sbd && axil_wready_sbd && axil_wvalid_sbd) begin
@@ -703,16 +755,16 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
                 // Reading DATA RAM
                 data_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
-                read_enable = 2'b11;
+                read_enable = {1'b1,1'b1};
 
                 // Reading Tag RAM
                 tag_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
-                tag_read_enable = 2'b11;
+                tag_read_enable = {1'b1,1'b1};
 
 
                 // Reading Valid RAM
                 valid_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
-                valid_read_enable = 2'b11;
+                valid_read_enable = {1'b1,1'b1};
 
                 // Reading LRU RAM
                 lru_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
@@ -720,7 +772,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
                 // Reading the Dirty Bit RAM
                 dirty_addr = axil_awaddr_sbd[INDEX + OFFSET - 1 : OFFSET];
-                dirty_read_enable = 2'b11;
+                dirty_read_enable = {1'b1,1'b1};
                 
             end
             else if(axil_awready_sbd && axil_awvalid_sbd) begin
@@ -750,15 +802,15 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
             // Reading DATA RAM
             data_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
-            read_enable = 2'b11;
+            read_enable = {1'b1,1'b1};
 
             // Reading Tag RAM
             tag_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
-            tag_read_enable = 2'b11;
+            tag_read_enable = {1'b1,1'b1};
 
             // Reading Valid RAM
             valid_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
-            valid_read_enable = 2'b11;
+            valid_read_enable = {1'b1,1'b1};
 
             // Reading LRU RAM
             lru_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
@@ -766,7 +818,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
 
             // Reading the Dirty Bit RAM
             dirty_addr = write_address[INDEX + OFFSET - 1 : OFFSET];
-            dirty_read_enable = 2'b11;
+            dirty_read_enable = {1'b1,1'b1};
 
         end
         READ : begin
@@ -777,9 +829,9 @@ output logic                axil_rready_mng     // Read Response Ready Out
             axil_wready_sbd = 1'b0;
 
             // Re-Read the Valid, TAG and Data Banks Incase of Interface Not Ready
-            valid_addr = index; valid_read_enable = 2'b11;
-            tag_addr = index; tag_read_enable = 2'b11;
-            data_addr = index; read_enable = 2'b11;
+            valid_addr = index; valid_read_enable = {1'b1,1'b1};
+            tag_addr = index; tag_read_enable = {1'b1,1'b1};
+            data_addr = index; read_enable = {1'b1,1'b1};
 
             // Registering LRU Data incase of Miss
             next_writeback_data = data_out[lru_out];
@@ -822,8 +874,8 @@ output logic                axil_rready_mng     // Read Response Ready Out
             axil_wready_sbd = 1'b0;
 
             // Re-Read the Valid, TAG and Data Banks Incase of Interface Not Ready
-            valid_addr = index; valid_read_enable = 1'b1;
-            tag_addr = index; tag_read_enable = 1'b1;
+            valid_addr = index; valid_read_enable = {1'b1,1'b1};;
+            tag_addr = index; tag_read_enable = {1'b1,1'b1};;
 
             // Registering LRU Data incase of miss
             next_writeback_data = data_out[lru_out];
@@ -963,10 +1015,10 @@ output logic                axil_rready_mng     // Read Response Ready Out
             write_enable[lru_way] = 1'b1;
             data_in[lru_way] = fetched_data;
 
-            // Data on Output Bus
-            axil_rdata_sbd = fetched_data;
-            axil_rvalid_sbd = 1'b1;
-            axil_rresp_sbd = 2'b0;
+            // // Data on Output Bus
+            // axil_rdata_sbd = fetched_data;
+            // axil_rvalid_sbd = 1'b1;
+            // axil_rresp_sbd = 2'b0;
 
         end
         WRITE_UPDATE : begin
@@ -1001,18 +1053,28 @@ output logic                axil_rready_mng     // Read Response Ready Out
             write_enable[lru_way] = 1'b1;
             data_in[lru_way] = write_data;
 
-            // Data on Output Bus
-            axil_bvalid_sbd = 1'b1;
-            axil_bresp_sbd = 2'b00;
+            // // Data on Output Bus
+            // axil_bvalid_sbd = 1'b1;
+            // axil_bresp_sbd = 2'b00;
             
         end
         MNG_RREADY : begin
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+
             // Data on Output Bus
             axil_rdata_sbd = fetched_data;
             axil_rvalid_sbd = 1'b1;
             axil_rresp_sbd = 2'b00;
         end
         MNG_BREADY : begin
+            // Subordinate Interface Ready Signals
+            axil_arready_sbd = 1'b0;
+            axil_awready_sbd = 1'b0;
+            axil_wready_sbd = 1'b0;
+
             // Data on Output Bus
             axil_bvalid_sbd = 1'b1;
             axil_bresp_sbd = 2'b00;
