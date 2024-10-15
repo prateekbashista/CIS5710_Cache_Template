@@ -62,15 +62,15 @@
 <!-- WRITE -->
 <g id="node5" class="node state regular">
 <title>WRITE</title>
-<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="912,-580 852,-580 852,-544 912,-544 912,-580"/>
-<text text-anchor="start" x="862.671" y="-558.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">WRITE</text>
-<path fill="none" stroke="#000000" stroke-width="2" d="M864.3333,-545C864.3333,-545 899.6667,-545 899.6667,-545 905.3333,-545 911,-550.6667 911,-556.3333 911,-556.3333 911,-567.6667 911,-567.6667 911,-573.3333 905.3333,-579 899.6667,-579 899.6667,-579 864.3333,-579 864.3333,-579 858.6667,-579 853,-573.3333 853,-567.6667 853,-567.6667 853,-556.3333 853,-556.3333 853,-550.6667 858.6667,-545 864.3333,-545"/>
+<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="1028,-580 968,-580 968,-544 1028,-544 1028,-580"/>
+<text text-anchor="start" x="978.671" y="-558.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">WRITE</text>
+<path fill="none" stroke="#000000" stroke-width="2" d="M980.3333,-545C980.3333,-545 1015.6667,-545 1015.6667,-545 1021.3333,-545 1027,-550.6667 1027,-556.3333 1027,-556.3333 1027,-567.6667 1027,-567.6667 1027,-573.3333 1021.3333,-579 1015.6667,-579 1015.6667,-579 980.3333,-579 980.3333,-579 974.6667,-579 969,-573.3333 969,-567.6667 969,-567.6667 969,-556.3333 969,-556.3333 969,-550.6667 974.6667,-545 980.3333,-545"/>
 </g>
 <!-- IDLE&#45;&gt;WRITE -->
 <g id="edge2" class="edge transition">
 <title>IDLE&#45;&gt;WRITE</title>
-<path fill="none" stroke="#000000" d="M679.801,-719.9426C681.4161,-706.8957 681.0315,-689.7453 671,-679 637.2192,-642.8154 593.1465,-699.5798 560.925,-662 550.5104,-649.8535 550.7772,-638.3702 560.925,-626 596.0005,-583.2429 763.2748,-568.5085 841.5,-563.9001"/>
-<polygon fill="#000000" stroke="#000000" points="842.1358,-567.37 851.9239,-563.3151 841.7435,-560.381 842.1358,-567.37"/>
+<path fill="none" stroke="#000000" d="M679.801,-719.9426C681.4161,-706.8957 681.0315,-689.7453 671,-679 637.2192,-642.8154 593.1465,-699.5798 560.925,-662 550.5104,-649.8535 550.4629,-638.1056 560.925,-626 586.7715,-596.0932 854.4685,-572.8476 957.704,-564.9312"/>
+<polygon fill="#000000" stroke="#000000" points="958.0352,-568.4163 967.742,-564.1702 957.506,-561.4363 958.0352,-568.4163"/>
 <text text-anchor="start" x="560" y="-641" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_awready_sbd &amp;&amp; axil_awvalid_sbd &amp;&amp; axil_wready_sbd &amp;&amp; axil_wvalid_sbd &#160;&#160;</text>
 </g>
 <!-- WAIT_FOR_DATA&#45;&gt;WAIT_FOR_DATA -->
@@ -83,9 +83,9 @@
 <!-- WAIT_FOR_DATA&#45;&gt;WRITE -->
 <g id="edge5" class="edge transition">
 <title>WAIT_FOR_DATA&#45;&gt;WRITE</title>
-<path fill="none" stroke="#000000" d="M972.2558,-625.8015C955.7359,-614.1237 934.097,-598.8272 916.1483,-586.1393"/>
-<polygon fill="#000000" stroke="#000000" points="917.8583,-583.062 907.6722,-580.1476 913.8176,-588.778 917.8583,-583.062"/>
-<text text-anchor="start" x="947" y="-600" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_wready_sbd &amp;&amp; axil_wvalid_sbd &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M998,-625.8015C998,-615.3976 998,-602.1215 998,-590.3768"/>
+<polygon fill="#000000" stroke="#000000" points="1001.5001,-590.1476 998,-580.1476 994.5001,-590.1476 1001.5001,-590.1476"/>
+<text text-anchor="start" x="998" y="-600" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_wready_sbd &amp;&amp; axil_wvalid_sbd &#160;&#160;</text>
 </g>
 <!-- READ&#45;&gt;IDLE -->
 <g id="edge7" class="edge transition">
@@ -122,37 +122,37 @@
 <!-- MEM_READ_REQ -->
 <g id="node6" class="node state regular">
 <title>MEM_READ_REQ</title>
-<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="572,-310 450,-310 450,-274 572,-274 572,-310"/>
-<text text-anchor="start" x="460.6672" y="-288.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MEM_READ_REQ</text>
-<path fill="none" stroke="#000000" stroke-width="2" d="M462.3333,-275C462.3333,-275 559.6667,-275 559.6667,-275 565.3333,-275 571,-280.6667 571,-286.3333 571,-286.3333 571,-297.6667 571,-297.6667 571,-303.3333 565.3333,-309 559.6667,-309 559.6667,-309 462.3333,-309 462.3333,-309 456.6667,-309 451,-303.3333 451,-297.6667 451,-297.6667 451,-286.3333 451,-286.3333 451,-280.6667 456.6667,-275 462.3333,-275"/>
+<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="550,-310 428,-310 428,-274 550,-274 550,-310"/>
+<text text-anchor="start" x="438.6672" y="-288.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MEM_READ_REQ</text>
+<path fill="none" stroke="#000000" stroke-width="2" d="M440.3333,-275C440.3333,-275 537.6667,-275 537.6667,-275 543.3333,-275 549,-280.6667 549,-286.3333 549,-286.3333 549,-297.6667 549,-297.6667 549,-303.3333 543.3333,-309 537.6667,-309 537.6667,-309 440.3333,-309 440.3333,-309 434.6667,-309 429,-303.3333 429,-297.6667 429,-297.6667 429,-286.3333 429,-286.3333 429,-280.6667 434.6667,-275 440.3333,-275"/>
 </g>
 <!-- READ&#45;&gt;MEM_READ_REQ -->
 <g id="edge12" class="edge transition">
 <title>READ&#45;&gt;MEM_READ_REQ</title>
-<path fill="none" stroke="#000000" d="M96.0176,-643.0638C144.7558,-640.666 240,-632.2396 240,-603 240,-603 240,-603 240,-333 240,-312.7792 359.4772,-301.3351 439.7696,-295.9274"/>
-<polygon fill="#000000" stroke="#000000" points="440.095,-299.4136 449.8444,-295.2664 439.6367,-292.4287 440.095,-299.4136"/>
-<text text-anchor="start" x="240" y="-489" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (valid_out[0] &amp;&amp; tag == tag_out[0]) &#160;&#160;</text>
-<text text-anchor="start" x="240" y="-477" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (valid_out[1] &amp;&amp; tag == tag_out[1]) &#160;&#160;</text>
-<text text-anchor="start" x="240" y="-465" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (dirty_out[lru_out]) &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M96.0685,-642.4106C141.2272,-639.0758 225,-629.3399 225,-603 225,-603 225,-603 225,-333 225,-313.4685 339.2882,-301.8895 417.4708,-296.2536"/>
+<polygon fill="#000000" stroke="#000000" points="418.0394,-299.7224 427.7695,-295.5302 417.5488,-292.7396 418.0394,-299.7224"/>
+<text text-anchor="start" x="225" y="-489" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (valid_out[0] &amp;&amp; tag == tag_out[0]) &#160;&#160;</text>
+<text text-anchor="start" x="225" y="-477" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (valid_out[1] &amp;&amp; tag == tag_out[1]) &#160;&#160;</text>
+<text text-anchor="start" x="225" y="-465" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (dirty_out[lru_out]) &#160;&#160;</text>
 </g>
 <!-- MEM_WRITE_REQ -->
 <g id="node8" class="node state regular">
 <title>MEM_WRITE_REQ</title>
-<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="574.5,-498 447.5,-498 447.5,-462 574.5,-462 574.5,-498"/>
-<text text-anchor="start" x="458.5038" y="-476.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MEM_WRITE_REQ</text>
-<path fill="none" stroke="#000000" stroke-width="2" d="M459.8333,-463C459.8333,-463 562.1667,-463 562.1667,-463 567.8333,-463 573.5,-468.6667 573.5,-474.3333 573.5,-474.3333 573.5,-485.6667 573.5,-485.6667 573.5,-491.3333 567.8333,-497 562.1667,-497 562.1667,-497 459.8333,-497 459.8333,-497 454.1667,-497 448.5,-491.3333 448.5,-485.6667 448.5,-485.6667 448.5,-474.3333 448.5,-474.3333 448.5,-468.6667 454.1667,-463 459.8333,-463"/>
+<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="552.5,-498 425.5,-498 425.5,-462 552.5,-462 552.5,-498"/>
+<text text-anchor="start" x="436.5038" y="-476.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MEM_WRITE_REQ</text>
+<path fill="none" stroke="#000000" stroke-width="2" d="M437.8333,-463C437.8333,-463 540.1667,-463 540.1667,-463 545.8333,-463 551.5,-468.6667 551.5,-474.3333 551.5,-474.3333 551.5,-485.6667 551.5,-485.6667 551.5,-491.3333 545.8333,-497 540.1667,-497 540.1667,-497 437.8333,-497 437.8333,-497 432.1667,-497 426.5,-491.3333 426.5,-485.6667 426.5,-485.6667 426.5,-474.3333 426.5,-474.3333 426.5,-468.6667 432.1667,-463 437.8333,-463"/>
 </g>
 <!-- READ&#45;&gt;MEM_WRITE_REQ -->
 <g id="edge11" class="edge transition">
 <title>READ&#45;&gt;MEM_WRITE_REQ</title>
-<path fill="none" stroke="#000000" d="M96.1356,-643.4402C175.9388,-641.4819 398,-633.3094 398,-603 398,-603 398,-603 398,-521 398,-510.3651 415.9102,-501.6997 437.4699,-495.1212"/>
-<polygon fill="#000000" stroke="#000000" points="438.577,-498.4451 447.2347,-492.3382 436.6583,-491.7132 438.577,-498.4451"/>
-<text text-anchor="start" x="398" y="-559" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dirty_out[lru_out] &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M96.0572,-643.2119C172.3665,-640.6978 378,-631.2977 378,-603 378,-603 378,-603 378,-521 378,-510.7118 394.9916,-502.198 415.6787,-495.645"/>
+<polygon fill="#000000" stroke="#000000" points="416.7982,-498.9639 425.396,-492.7728 414.814,-492.251 416.7982,-498.9639"/>
+<text text-anchor="start" x="378" y="-559" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dirty_out[lru_out] &#160;&#160;</text>
 </g>
 <!-- WRITE&#45;&gt;IDLE -->
 <g id="edge13" class="edge transition">
 <title>WRITE&#45;&gt;IDLE</title>
-<path fill="none" stroke="#000000" d="M912.1735,-563.268C1010.595,-567.6012 1316,-582.6839 1316,-603 1316,-691 1316,-691 1316,-691 1316,-721.335 852.6424,-734.0749 714.4504,-737.2"/>
+<path fill="none" stroke="#000000" d="M1028.2034,-562.7565C1107.5815,-565.1438 1316,-574.1584 1316,-603 1316,-691 1316,-691 1316,-691 1316,-721.335 852.6424,-734.0749 714.4504,-737.2"/>
 <polygon fill="#000000" stroke="#000000" points="714.2456,-733.7036 704.3258,-737.4248 714.4011,-740.7018 714.2456,-733.7036"/>
 <text text-anchor="start" x="1316" y="-647" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_bready_sbd &amp;&amp; axil_bvalid_sbd &#160;&#160;</text>
 <text text-anchor="start" x="1316" y="-635" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valid_out[0] &amp;&amp; tag == tag_out[0] &#160;&#160;</text>
@@ -160,7 +160,7 @@
 <!-- WRITE&#45;&gt;IDLE -->
 <g id="edge15" class="edge transition">
 <title>WRITE&#45;&gt;IDLE</title>
-<path fill="none" stroke="#000000" d="M912.2915,-562.3169C1040.0081,-563.8483 1528,-571.7447 1528,-603 1528,-691 1528,-691 1528,-691 1528,-711.6566 880.9097,-732.0054 714.5952,-736.8943"/>
+<path fill="none" stroke="#000000" d="M1028.0137,-562.7386C1140.1318,-565.6922 1528,-577.7359 1528,-603 1528,-691 1528,-691 1528,-691 1528,-711.6566 880.9097,-732.0054 714.5952,-736.8943"/>
 <polygon fill="#000000" stroke="#000000" points="714.241,-733.4031 704.3476,-737.1938 714.4456,-740.4001 714.241,-733.4031"/>
 <text text-anchor="start" x="1528" y="-647" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_bready_sbd &amp;&amp; axil_bvalid_sbd &#160;&#160;</text>
 <text text-anchor="start" x="1528" y="-635" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valid_out[1] &amp;&amp; tag == tag_out[1] &#160;&#160;</text>
@@ -168,169 +168,183 @@
 <!-- WRITE&#45;&gt;WRITE -->
 <g id="edge14" class="edge transition">
 <title>WRITE&#45;&gt;WRITE</title>
-<path fill="none" stroke="#000000" d="M912.185,-564.4254C924.0717,-564.5477 934,-563.7393 934,-562 934,-560.8043 929.3073,-560.0485 922.5118,-559.7326"/>
-<polygon fill="#000000" stroke="#000000" points="922.2374,-556.2281 912.185,-559.5746 922.1302,-563.2273 922.2374,-556.2281"/>
-<text text-anchor="start" x="934" y="-565" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_bready_sbd &amp;&amp; axil_bvalid_sbd) &#160;&#160;</text>
-<text text-anchor="start" x="934" y="-553" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valid_out[0] &amp;&amp; tag == tag_out[0] &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M1028.185,-564.4254C1040.0717,-564.5477 1050,-563.7393 1050,-562 1050,-560.8043 1045.3073,-560.0485 1038.5118,-559.7326"/>
+<polygon fill="#000000" stroke="#000000" points="1038.2374,-556.2281 1028.185,-559.5746 1038.1302,-563.2273 1038.2374,-556.2281"/>
+<text text-anchor="start" x="1050" y="-565" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_bready_sbd &amp;&amp; axil_bvalid_sbd) &#160;&#160;</text>
+<text text-anchor="start" x="1050" y="-553" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valid_out[0] &amp;&amp; tag == tag_out[0] &#160;&#160;</text>
 </g>
 <!-- WRITE&#45;&gt;WRITE -->
 <g id="edge16" class="edge transition">
 <title>WRITE&#45;&gt;WRITE</title>
-<path fill="none" stroke="#000000" d="M912.2035,-564.8986C979.015,-568.2855 1125.713,-567.3193 1125.713,-562 1125.713,-556.9404 992.9912,-555.8192 922.5353,-558.6364"/>
-<polygon fill="#000000" stroke="#000000" points="922.036,-555.1552 912.2035,-559.1014 922.3507,-562.1481 922.036,-555.1552"/>
-<text text-anchor="start" x="1125.713" y="-565" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_bready_sbd &amp;&amp; axil_bvalid_sbd) &#160;&#160;</text>
-<text text-anchor="start" x="1125.713" y="-553" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valid_out[1] &amp;&amp; tag == tag_out[1] &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M1028.2035,-564.8986C1095.015,-568.2855 1241.713,-567.3193 1241.713,-562 1241.713,-556.9404 1108.9912,-555.8192 1038.5353,-558.6364"/>
+<polygon fill="#000000" stroke="#000000" points="1038.036,-555.1552 1028.2035,-559.1014 1038.3507,-562.1481 1038.036,-555.1552"/>
+<text text-anchor="start" x="1241.713" y="-565" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_bready_sbd &amp;&amp; axil_bvalid_sbd) &#160;&#160;</text>
+<text text-anchor="start" x="1241.713" y="-553" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">valid_out[1] &amp;&amp; tag == tag_out[1] &#160;&#160;</text>
 </g>
 <!-- WRITE&#45;&gt;MEM_READ_REQ -->
 <g id="edge18" class="edge transition">
 <title>WRITE&#45;&gt;MEM_READ_REQ</title>
-<path fill="none" stroke="#000000" d="M851.7265,-554.1723C835.9882,-548.0866 820,-537.7759 820,-521 820,-521 820,-521 820,-333 820,-309.1365 673.3051,-298.6932 582.065,-294.5057"/>
-<polygon fill="#000000" stroke="#000000" points="582.194,-291.0081 572.0485,-294.0607 581.8833,-298.0012 582.194,-291.0081"/>
-<text text-anchor="start" x="820" y="-436" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (valid_out[0] &amp;&amp; tag == tag_out[0]) &#160;&#160;</text>
-<text text-anchor="start" x="820" y="-424" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (valid_out[1] &amp;&amp; tag == tag_out[1]) &#160;&#160;</text>
-<text text-anchor="start" x="820" y="-412" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (dirty_out[lru_out]) &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M996.722,-543.6406C996.3301,-536.5679 996,-528.4116 996,-521 996,-521 996,-521 996,-333 996,-311.4081 700.0026,-298.8755 560.3404,-294.1639"/>
+<polygon fill="#000000" stroke="#000000" points="560.267,-290.6596 550.156,-293.8249 560.034,-297.6557 560.267,-290.6596"/>
+<text text-anchor="start" x="996" y="-436" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (valid_out[0] &amp;&amp; tag == tag_out[0]) &#160;&#160;</text>
+<text text-anchor="start" x="996" y="-424" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (valid_out[1] &amp;&amp; tag == tag_out[1]) &#160;&#160;</text>
+<text text-anchor="start" x="996" y="-412" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (dirty_out[lru_out]) &#160;&#160;</text>
 </g>
 <!-- WRITE&#45;&gt;MEM_WRITE_REQ -->
 <g id="edge17" class="edge transition">
 <title>WRITE&#45;&gt;MEM_WRITE_REQ</title>
-<path fill="none" stroke="#000000" d="M851.9538,-555.3591C794.3017,-542.6166 666.6412,-514.4005 584.932,-496.3408"/>
-<polygon fill="#000000" stroke="#000000" points="585.2289,-492.822 574.7092,-494.0813 583.7181,-499.657 585.2289,-492.822"/>
-<text text-anchor="start" x="721" y="-518" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dirty_out[lru_out] &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M967.6841,-557.1161C888.9468,-544.4315 676.2127,-510.16 562.7009,-491.8732"/>
+<polygon fill="#000000" stroke="#000000" points="563.1302,-488.3973 552.7008,-490.2622 562.0168,-495.3082 563.1302,-488.3973"/>
+<text text-anchor="start" x="777" y="-518" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dirty_out[lru_out] &#160;&#160;</text>
+</g>
+<!-- MEM_READ_REQ&#45;&gt;MEM_READ_REQ -->
+<g id="edge20" class="edge transition">
+<title>MEM_READ_REQ&#45;&gt;MEM_READ_REQ</title>
+<path fill="none" stroke="#000000" d="M550.1684,-296.7036C562.8678,-296.2085 572,-294.6406 572,-292 572,-290.1433 567.4852,-288.817 560.39,-288.021"/>
+<polygon fill="#000000" stroke="#000000" points="560.3909,-284.5124 550.1684,-287.2964 559.8959,-291.4948 560.3909,-284.5124"/>
+<text text-anchor="start" x="572" y="-289" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_arvalid_mng &amp;&amp; axil_arready_mng) &#160;&#160;</text>
 </g>
 <!-- MEM_AXI_RRESP -->
 <g id="node7" class="node state regular">
 <title>MEM_AXI_RRESP</title>
-<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="573,-228 449,-228 449,-192 573,-192 573,-228"/>
-<text text-anchor="start" x="459.9958" y="-206.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MEM_AXI_RRESP</text>
-<path fill="none" stroke="#000000" stroke-width="2" d="M461.3333,-193C461.3333,-193 560.6667,-193 560.6667,-193 566.3333,-193 572,-198.6667 572,-204.3333 572,-204.3333 572,-215.6667 572,-215.6667 572,-221.3333 566.3333,-227 560.6667,-227 560.6667,-227 461.3333,-227 461.3333,-227 455.6667,-227 450,-221.3333 450,-215.6667 450,-215.6667 450,-204.3333 450,-204.3333 450,-198.6667 455.6667,-193 461.3333,-193"/>
+<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="551,-228 427,-228 427,-192 551,-192 551,-228"/>
+<text text-anchor="start" x="437.9958" y="-206.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MEM_AXI_RRESP</text>
+<path fill="none" stroke="#000000" stroke-width="2" d="M439.3333,-193C439.3333,-193 538.6667,-193 538.6667,-193 544.3333,-193 550,-198.6667 550,-204.3333 550,-204.3333 550,-215.6667 550,-215.6667 550,-221.3333 544.3333,-227 538.6667,-227 538.6667,-227 439.3333,-227 439.3333,-227 433.6667,-227 428,-221.3333 428,-215.6667 428,-215.6667 428,-204.3333 428,-204.3333 428,-198.6667 433.6667,-193 439.3333,-193"/>
 </g>
 <!-- MEM_READ_REQ&#45;&gt;MEM_AXI_RRESP -->
 <g id="edge19" class="edge transition">
 <title>MEM_READ_REQ&#45;&gt;MEM_AXI_RRESP</title>
-<path fill="none" stroke="#000000" d="M511,-273.8015C511,-263.3976 511,-250.1215 511,-238.3768"/>
-<polygon fill="#000000" stroke="#000000" points="514.5001,-238.1476 511,-228.1476 507.5001,-238.1476 514.5001,-238.1476"/>
-<text text-anchor="middle" x="512.3895" y="-248" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> </text>
+<path fill="none" stroke="#000000" d="M489,-273.8015C489,-263.3976 489,-250.1215 489,-238.3768"/>
+<polygon fill="#000000" stroke="#000000" points="492.5001,-238.1476 489,-228.1476 485.5001,-238.1476 492.5001,-238.1476"/>
+<text text-anchor="start" x="489" y="-248" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_arvalid_mng &amp;&amp; axil_arready_mng &#160;&#160;</text>
 </g>
 <!-- MEM_AXI_RRESP&#45;&gt;MEM_AXI_RRESP -->
-<g id="edge22" class="edge transition">
+<g id="edge23" class="edge transition">
 <title>MEM_AXI_RRESP&#45;&gt;MEM_AXI_RRESP</title>
-<path fill="none" stroke="#000000" d="M573.2751,-214.689C585.9347,-214.1782 595,-212.6152 595,-210 595,-208.1612 590.5183,-206.8425 583.4566,-206.0441"/>
-<polygon fill="#000000" stroke="#000000" points="583.5007,-202.5383 573.2751,-205.311 582.9979,-209.5202 583.5007,-202.5383"/>
-<text text-anchor="start" x="595" y="-207" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_rready_mng &amp;&amp; axil_rvalid_mng) &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M551.2751,-214.689C563.9347,-214.1782 573,-212.6152 573,-210 573,-208.1612 568.5183,-206.8425 561.4566,-206.0441"/>
+<polygon fill="#000000" stroke="#000000" points="561.5007,-202.5383 551.2751,-205.311 560.9979,-209.5202 561.5007,-202.5383"/>
+<text text-anchor="start" x="573" y="-207" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_rready_mng &amp;&amp; axil_rvalid_mng) &#160;&#160;</text>
 </g>
 <!-- READ_UPDATE -->
 <g id="node10" class="node state regular">
 <title>READ_UPDATE</title>
-<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="368,-134 258,-134 258,-98 368,-98 368,-134"/>
-<text text-anchor="start" x="268.6666" y="-112.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">READ_UPDATE</text>
-<path fill="none" stroke="#000000" stroke-width="2" d="M270.3333,-99C270.3333,-99 355.6667,-99 355.6667,-99 361.3333,-99 367,-104.6667 367,-110.3333 367,-110.3333 367,-121.6667 367,-121.6667 367,-127.3333 361.3333,-133 355.6667,-133 355.6667,-133 270.3333,-133 270.3333,-133 264.6667,-133 259,-127.3333 259,-121.6667 259,-121.6667 259,-110.3333 259,-110.3333 259,-104.6667 264.6667,-99 270.3333,-99"/>
+<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="398,-134 288,-134 288,-98 398,-98 398,-134"/>
+<text text-anchor="start" x="298.6666" y="-112.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">READ_UPDATE</text>
+<path fill="none" stroke="#000000" stroke-width="2" d="M300.3333,-99C300.3333,-99 385.6667,-99 385.6667,-99 391.3333,-99 397,-104.6667 397,-110.3333 397,-110.3333 397,-121.6667 397,-121.6667 397,-127.3333 391.3333,-133 385.6667,-133 385.6667,-133 300.3333,-133 300.3333,-133 294.6667,-133 289,-127.3333 289,-121.6667 289,-121.6667 289,-110.3333 289,-110.3333 289,-104.6667 294.6667,-99 300.3333,-99"/>
 </g>
 <!-- MEM_AXI_RRESP&#45;&gt;READ_UPDATE -->
-<g id="edge21" class="edge transition">
+<g id="edge22" class="edge transition">
 <title>MEM_AXI_RRESP&#45;&gt;READ_UPDATE</title>
-<path fill="none" stroke="#000000" d="M472.8236,-191.8759C440.7754,-176.661 394.843,-154.8548 360.4368,-138.5205"/>
-<polygon fill="#000000" stroke="#000000" points="361.5939,-135.1955 351.0592,-134.0685 358.5918,-141.5191 361.5939,-135.1955"/>
-<text text-anchor="start" x="436" y="-166" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (r_w) &#160;&#160;</text>
-<text text-anchor="start" x="436" y="-154" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_rready_mng &amp;&amp; axil_rvalid_mng &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M460.8497,-191.8759C437.7232,-176.9861 404.7916,-155.7836 379.6164,-139.5749"/>
+<polygon fill="#000000" stroke="#000000" points="381.3666,-136.5391 371.0638,-134.0685 377.5772,-142.4248 381.3666,-136.5391"/>
+<text text-anchor="start" x="434" y="-166" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (r_w) &#160;&#160;</text>
+<text text-anchor="start" x="434" y="-154" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_rready_mng &amp;&amp; axil_rvalid_mng &#160;&#160;</text>
 </g>
 <!-- WRITE_UPDATE -->
 <g id="node11" class="node state regular">
 <title>WRITE_UPDATE</title>
-<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="1111.5,-134 996.5,-134 996.5,-98 1111.5,-98 1111.5,-134"/>
-<text text-anchor="start" x="1007.5032" y="-112.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">WRITE_UPDATE</text>
-<path fill="none" stroke="#000000" stroke-width="2" d="M1008.8333,-99C1008.8333,-99 1099.1667,-99 1099.1667,-99 1104.8333,-99 1110.5,-104.6667 1110.5,-110.3333 1110.5,-110.3333 1110.5,-121.6667 1110.5,-121.6667 1110.5,-127.3333 1104.8333,-133 1099.1667,-133 1099.1667,-133 1008.8333,-133 1008.8333,-133 1003.1667,-133 997.5,-127.3333 997.5,-121.6667 997.5,-121.6667 997.5,-110.3333 997.5,-110.3333 997.5,-104.6667 1003.1667,-99 1008.8333,-99"/>
+<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="1274.5,-134 1159.5,-134 1159.5,-98 1274.5,-98 1274.5,-134"/>
+<text text-anchor="start" x="1170.5032" y="-112.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">WRITE_UPDATE</text>
+<path fill="none" stroke="#000000" stroke-width="2" d="M1171.8333,-99C1171.8333,-99 1262.1667,-99 1262.1667,-99 1267.8333,-99 1273.5,-104.6667 1273.5,-110.3333 1273.5,-110.3333 1273.5,-121.6667 1273.5,-121.6667 1273.5,-127.3333 1267.8333,-133 1262.1667,-133 1262.1667,-133 1171.8333,-133 1171.8333,-133 1166.1667,-133 1160.5,-127.3333 1160.5,-121.6667 1160.5,-121.6667 1160.5,-110.3333 1160.5,-110.3333 1160.5,-104.6667 1166.1667,-99 1171.8333,-99"/>
 </g>
 <!-- MEM_AXI_RRESP&#45;&gt;WRITE_UPDATE -->
-<g id="edge20" class="edge transition">
+<g id="edge21" class="edge transition">
 <title>MEM_AXI_RRESP&#45;&gt;WRITE_UPDATE</title>
-<path fill="none" stroke="#000000" d="M573.0244,-199.2628C675.7324,-181.4828 880.3108,-146.0678 986.5106,-127.6832"/>
-<polygon fill="#000000" stroke="#000000" points="987.2178,-131.113 996.4742,-125.9584 986.0237,-124.2156 987.2178,-131.113"/>
-<text text-anchor="start" x="849" y="-166" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">r_w &#160;&#160;</text>
-<text text-anchor="start" x="849" y="-154" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_rready_mng &amp;&amp; axil_rvalid_mng &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M551.0689,-201.9856C686.5924,-184.4867 1008.0881,-142.9749 1148.924,-124.79"/>
+<polygon fill="#000000" stroke="#000000" points="1149.6827,-128.2212 1159.1522,-123.4694 1148.7863,-121.2788 1149.6827,-128.2212"/>
+<text text-anchor="start" x="943" y="-166" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">r_w &#160;&#160;</text>
+<text text-anchor="start" x="943" y="-154" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_rready_mng &amp;&amp; axil_rvalid_mng &#160;&#160;</text>
+</g>
+<!-- MEM_WRITE_REQ&#45;&gt;MEM_WRITE_REQ -->
+<g id="edge25" class="edge transition">
+<title>MEM_WRITE_REQ&#45;&gt;MEM_WRITE_REQ</title>
+<path fill="none" stroke="#000000" d="M552.7615,-484.6739C565.4511,-484.1478 574.5,-482.5898 574.5,-480 574.5,-478.179 570.0264,-476.8682 562.959,-476.0675"/>
+<polygon fill="#000000" stroke="#000000" points="562.9889,-472.5605 552.7615,-475.3261 562.4813,-479.5421 562.9889,-472.5605"/>
+<text text-anchor="start" x="574.5" y="-477" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_awready_mng &amp;&amp; axil_awvalid_mng &amp;&amp; axil_wready_mng &amp;&amp; axil_wvalid_mng) &#160;&#160;</text>
 </g>
 <!-- MEM_AXI_BRESP -->
 <g id="node9" class="node state regular">
 <title>MEM_AXI_BRESP</title>
-<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="572.5,-392 449.5,-392 449.5,-356 572.5,-356 572.5,-392"/>
-<text text-anchor="start" x="460.8258" y="-370.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MEM_AXI_BRESP</text>
-<path fill="none" stroke="#000000" stroke-width="2" d="M461.8333,-357C461.8333,-357 560.1667,-357 560.1667,-357 565.8333,-357 571.5,-362.6667 571.5,-368.3333 571.5,-368.3333 571.5,-379.6667 571.5,-379.6667 571.5,-385.3333 565.8333,-391 560.1667,-391 560.1667,-391 461.8333,-391 461.8333,-391 456.1667,-391 450.5,-385.3333 450.5,-379.6667 450.5,-379.6667 450.5,-368.3333 450.5,-368.3333 450.5,-362.6667 456.1667,-357 461.8333,-357"/>
+<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="550.5,-392 427.5,-392 427.5,-356 550.5,-356 550.5,-392"/>
+<text text-anchor="start" x="438.8258" y="-370.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MEM_AXI_BRESP</text>
+<path fill="none" stroke="#000000" stroke-width="2" d="M439.8333,-357C439.8333,-357 538.1667,-357 538.1667,-357 543.8333,-357 549.5,-362.6667 549.5,-368.3333 549.5,-368.3333 549.5,-379.6667 549.5,-379.6667 549.5,-385.3333 543.8333,-391 538.1667,-391 538.1667,-391 439.8333,-391 439.8333,-391 434.1667,-391 428.5,-385.3333 428.5,-379.6667 428.5,-379.6667 428.5,-368.3333 428.5,-368.3333 428.5,-362.6667 434.1667,-357 439.8333,-357"/>
 </g>
 <!-- MEM_WRITE_REQ&#45;&gt;MEM_AXI_BRESP -->
-<g id="edge23" class="edge transition">
+<g id="edge24" class="edge transition">
 <title>MEM_WRITE_REQ&#45;&gt;MEM_AXI_BRESP</title>
-<path fill="none" stroke="#000000" d="M511,-461.5362C511,-445.1966 511,-421.1 511,-402.3232"/>
-<polygon fill="#000000" stroke="#000000" points="514.5001,-402.2522 511,-392.2522 507.5001,-402.2522 514.5001,-402.2522"/>
-<text text-anchor="middle" x="512.3895" y="-424" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> </text>
+<path fill="none" stroke="#000000" d="M489,-461.5362C489,-445.1966 489,-421.1 489,-402.3232"/>
+<polygon fill="#000000" stroke="#000000" points="492.5001,-402.2522 489,-392.2522 485.5001,-402.2522 492.5001,-402.2522"/>
+<text text-anchor="start" x="489" y="-424" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_awready_mng &amp;&amp; axil_awvalid_mng &amp;&amp; axil_wready_mng &amp;&amp; axil_wvalid_mng &#160;&#160;</text>
 </g>
 <!-- MEM_AXI_BRESP&#45;&gt;MEM_READ_REQ -->
-<g id="edge24" class="edge transition">
+<g id="edge26" class="edge transition">
 <title>MEM_AXI_BRESP&#45;&gt;MEM_READ_REQ</title>
-<path fill="none" stroke="#000000" d="M511,-355.8015C511,-345.3976 511,-332.1215 511,-320.3768"/>
-<polygon fill="#000000" stroke="#000000" points="514.5001,-320.1476 511,-310.1476 507.5001,-320.1476 514.5001,-320.1476"/>
-<text text-anchor="start" x="511" y="-330" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_bready_mng &amp;&amp; axil_bvalid_mng &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M489,-355.8015C489,-345.3976 489,-332.1215 489,-320.3768"/>
+<polygon fill="#000000" stroke="#000000" points="492.5001,-320.1476 489,-310.1476 485.5001,-320.1476 492.5001,-320.1476"/>
+<text text-anchor="start" x="489" y="-330" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_bready_mng &amp;&amp; axil_bvalid_mng &#160;&#160;</text>
 </g>
 <!-- MEM_AXI_BRESP&#45;&gt;MEM_AXI_BRESP -->
-<g id="edge25" class="edge transition">
+<g id="edge27" class="edge transition">
 <title>MEM_AXI_BRESP&#45;&gt;MEM_AXI_BRESP</title>
-<path fill="none" stroke="#000000" d="M572.5369,-378.7036C585.3128,-378.2085 594.5,-376.6406 594.5,-374 594.5,-372.1433 589.958,-370.817 582.8201,-370.021"/>
-<polygon fill="#000000" stroke="#000000" points="582.7582,-366.508 572.5369,-369.2964 582.2661,-373.4907 582.7582,-366.508"/>
-<text text-anchor="start" x="594.5" y="-371" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_bready_mng &amp;&amp; axil_bvalid_mng) &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M550.5369,-378.7036C563.3128,-378.2085 572.5,-376.6406 572.5,-374 572.5,-372.1433 567.958,-370.817 560.8201,-370.021"/>
+<polygon fill="#000000" stroke="#000000" points="560.7582,-366.508 550.5369,-369.2964 560.2661,-373.4907 560.7582,-366.508"/>
+<text text-anchor="start" x="572.5" y="-371" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_bready_mng &amp;&amp; axil_bvalid_mng) &#160;&#160;</text>
 </g>
 <!-- MNG_RREADY -->
 <g id="node12" class="node state regular">
 <title>MNG_RREADY</title>
-<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="244,-52 138,-52 138,-16 244,-16 244,-52"/>
-<text text-anchor="start" x="148.67" y="-30.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MNG_RREADY</text>
-<path fill="none" stroke="#000000" stroke-width="2" d="M150.3333,-17C150.3333,-17 231.6667,-17 231.6667,-17 237.3333,-17 243,-22.6667 243,-28.3333 243,-28.3333 243,-39.6667 243,-39.6667 243,-45.3333 237.3333,-51 231.6667,-51 231.6667,-51 150.3333,-51 150.3333,-51 144.6667,-51 139,-45.3333 139,-39.6667 139,-39.6667 139,-28.3333 139,-28.3333 139,-22.6667 144.6667,-17 150.3333,-17"/>
+<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="162,-52 56,-52 56,-16 162,-16 162,-52"/>
+<text text-anchor="start" x="66.67" y="-30.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MNG_RREADY</text>
+<path fill="none" stroke="#000000" stroke-width="2" d="M68.3333,-17C68.3333,-17 149.6667,-17 149.6667,-17 155.3333,-17 161,-22.6667 161,-28.3333 161,-28.3333 161,-39.6667 161,-39.6667 161,-45.3333 155.3333,-51 149.6667,-51 149.6667,-51 68.3333,-51 68.3333,-51 62.6667,-51 57,-45.3333 57,-39.6667 57,-39.6667 57,-28.3333 57,-28.3333 57,-22.6667 62.6667,-17 68.3333,-17"/>
 </g>
 <!-- READ_UPDATE&#45;&gt;MNG_RREADY -->
-<g id="edge26" class="edge transition">
+<g id="edge28" class="edge transition">
 <title>READ_UPDATE&#45;&gt;MNG_RREADY</title>
-<path fill="none" stroke="#000000" d="M285.9242,-97.8015C268.3919,-86.0175 245.3774,-70.5487 226.4007,-57.7939"/>
-<polygon fill="#000000" stroke="#000000" points="228.252,-54.8212 218.0001,-52.1476 224.3472,-60.6308 228.252,-54.8212"/>
-<text text-anchor="middle" x="261.3895" y="-72" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> </text>
+<path fill="none" stroke="#000000" d="M291.358,-97.9032C255.652,-85.3909 207.9887,-68.6884 170.3458,-55.4973"/>
+<polygon fill="#000000" stroke="#000000" points="171.1049,-52.0546 160.5101,-52.0505 168.7899,-58.6608 171.1049,-52.0546"/>
+<text text-anchor="middle" x="242.3895" y="-72" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> </text>
 </g>
 <!-- MNG_BREADY -->
 <g id="node13" class="node state regular">
 <title>MNG_BREADY</title>
-<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="1461,-52 1355,-52 1355,-16 1461,-16 1461,-52"/>
-<text text-anchor="start" x="1366" y="-30.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MNG_BREADY</text>
-<path fill="none" stroke="#000000" stroke-width="2" d="M1367.3333,-17C1367.3333,-17 1448.6667,-17 1448.6667,-17 1454.3333,-17 1460,-22.6667 1460,-28.3333 1460,-28.3333 1460,-39.6667 1460,-39.6667 1460,-45.3333 1454.3333,-51 1448.6667,-51 1448.6667,-51 1367.3333,-51 1367.3333,-51 1361.6667,-51 1356,-45.3333 1356,-39.6667 1356,-39.6667 1356,-28.3333 1356,-28.3333 1356,-22.6667 1361.6667,-17 1367.3333,-17"/>
+<polygon fill="#ffffff" fill-opacity="0.003922" stroke="transparent" stroke-width="2" points="1391,-52 1285,-52 1285,-16 1391,-16 1391,-52"/>
+<text text-anchor="start" x="1296" y="-30.2" font-family="Helvetica,sans-Serif" font-size="12.00" fill="#000000">MNG_BREADY</text>
+<path fill="none" stroke="#000000" stroke-width="2" d="M1297.3333,-17C1297.3333,-17 1378.6667,-17 1378.6667,-17 1384.3333,-17 1390,-22.6667 1390,-28.3333 1390,-28.3333 1390,-39.6667 1390,-39.6667 1390,-45.3333 1384.3333,-51 1378.6667,-51 1378.6667,-51 1297.3333,-51 1297.3333,-51 1291.6667,-51 1286,-45.3333 1286,-39.6667 1286,-39.6667 1286,-28.3333 1286,-28.3333 1286,-22.6667 1291.6667,-17 1297.3333,-17"/>
 </g>
 <!-- WRITE_UPDATE&#45;&gt;MNG_BREADY -->
-<g id="edge27" class="edge transition">
+<g id="edge29" class="edge transition">
 <title>WRITE_UPDATE&#45;&gt;MNG_BREADY</title>
-<path fill="none" stroke="#000000" d="M1111.6641,-102.6428C1175.7691,-87.7936 1278.9653,-63.8894 1345.1077,-48.5683"/>
-<polygon fill="#000000" stroke="#000000" points="1346.0385,-51.9454 1354.9907,-46.279 1344.4588,-45.126 1346.0385,-51.9454"/>
-<text text-anchor="middle" x="1255.3895" y="-72" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> </text>
+<path fill="none" stroke="#000000" d="M1243.8538,-97.8015C1261.2425,-86.0175 1284.0683,-70.5487 1302.8894,-57.7939"/>
+<polygon fill="#000000" stroke="#000000" points="1304.9066,-60.655 1311.2212,-52.1476 1300.9796,-54.8603 1304.9066,-60.655"/>
+<text text-anchor="middle" x="1286.3895" y="-72" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000"> </text>
 </g>
 <!-- MNG_RREADY&#45;&gt;IDLE -->
-<g id="edge28" class="edge transition">
+<g id="edge30" class="edge transition">
 <title>MNG_RREADY&#45;&gt;IDLE</title>
-<path fill="none" stroke="#000000" d="M137.9174,-38.2063C93.7274,-43.2211 38,-53.7565 38,-75 38,-453.5 38,-453.5 38,-453.5 38,-564.9007 -33.5941,-645.7996 62,-703 80.6254,-714.1448 88.4398,-709.4959 110,-712 212.5996,-723.9163 527.7596,-733.7787 637.6917,-736.9378"/>
+<path fill="none" stroke="#000000" d="M55.9163,-48.4618C45.6443,-54.5191 38,-63.0434 38,-75 38,-453.5 38,-453.5 38,-453.5 38,-564.9007 -33.5941,-645.7996 62,-703 80.6254,-714.1448 88.4398,-709.4959 110,-712 212.5996,-723.9163 527.7596,-733.7787 637.6917,-736.9378"/>
 <polygon fill="#000000" stroke="#000000" points="637.8799,-740.4445 647.9756,-737.2309 638.0794,-733.4473 637.8799,-740.4445"/>
 <text text-anchor="start" x="38" y="-371" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_rready_sbd &amp;&amp; axil_rvalid_sbd &#160;&#160;</text>
 </g>
 <!-- MNG_RREADY&#45;&gt;MNG_RREADY -->
-<g id="edge29" class="edge transition">
+<g id="edge31" class="edge transition">
 <title>MNG_RREADY&#45;&gt;MNG_RREADY</title>
-<path fill="none" stroke="#000000" d="M244.2553,-38.7786C256.7684,-38.3858 266,-36.793 266,-34 266,-32.0362 261.4361,-30.6657 254.3765,-29.8885"/>
-<polygon fill="#000000" stroke="#000000" points="254.4639,-26.3868 244.2553,-29.2214 254.0035,-33.3716 254.4639,-26.3868"/>
-<text text-anchor="start" x="266" y="-31" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_rready_sbd &amp;&amp; axil_rvalid_sbd) &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M162.2553,-38.7786C174.7684,-38.3858 184,-36.793 184,-34 184,-32.0362 179.4361,-30.6657 172.3765,-29.8885"/>
+<polygon fill="#000000" stroke="#000000" points="172.4639,-26.3868 162.2553,-29.2214 172.0035,-33.3716 172.4639,-26.3868"/>
+<text text-anchor="start" x="184" y="-31" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_rready_sbd &amp;&amp; axil_rvalid_sbd) &#160;&#160;</text>
 </g>
 <!-- MNG_BREADY&#45;&gt;IDLE -->
-<g id="edge30" class="edge transition">
+<g id="edge32" class="edge transition">
 <title>MNG_BREADY&#45;&gt;IDLE</title>
-<path fill="none" stroke="#000000" d="M1461.2112,-39.1844C1502.2314,-44.7079 1552,-55.4398 1552,-75 1552,-347.5 1552,-347.5 1552,-347.5 1552,-487.8792 1666.8643,-489.8344 1701,-626 1704.8907,-641.5197 1711.0955,-649.5871 1701,-662 1644.5714,-731.3818 1592.6584,-691.2651 1504,-703 1348.3057,-723.6079 856.0043,-734.521 714.4286,-737.2876"/>
+<path fill="none" stroke="#000000" d="M1391.1738,-39.0044C1454.5527,-45.7046 1552,-58.6628 1552,-75 1552,-347.5 1552,-347.5 1552,-347.5 1552,-487.8792 1666.8643,-489.8344 1701,-626 1704.8907,-641.5197 1711.0955,-649.5871 1701,-662 1644.5714,-731.3818 1592.6584,-691.2651 1504,-703 1348.3057,-723.6079 856.0043,-734.521 714.4286,-737.2876"/>
 <polygon fill="#000000" stroke="#000000" points="714.0203,-733.7947 704.0898,-737.4873 714.1556,-740.7934 714.0203,-733.7947"/>
 <text text-anchor="start" x="1556" y="-371" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">axil_bready_sbd &amp;&amp; axil_bvalid_sbd &#160;&#160;</text>
 </g>
 <!-- MNG_BREADY&#45;&gt;MNG_BREADY -->
-<g id="edge31" class="edge transition">
+<g id="edge33" class="edge transition">
 <title>MNG_BREADY&#45;&gt;MNG_BREADY</title>
-<path fill="none" stroke="#000000" d="M1461.2553,-38.7786C1473.7684,-38.3858 1483,-36.793 1483,-34 1483,-32.0362 1478.4361,-30.6657 1471.3765,-29.8885"/>
-<polygon fill="#000000" stroke="#000000" points="1471.4639,-26.3868 1461.2553,-29.2214 1471.0035,-33.3716 1471.4639,-26.3868"/>
-<text text-anchor="start" x="1483" y="-31" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_bready_sbd &amp;&amp; axil_bvalid_sbd) &#160;&#160;</text>
+<path fill="none" stroke="#000000" d="M1391.2553,-38.7786C1403.7684,-38.3858 1413,-36.793 1413,-34 1413,-32.0362 1408.4361,-30.6657 1401.3765,-29.8885"/>
+<polygon fill="#000000" stroke="#000000" points="1401.4639,-26.3868 1391.2553,-29.2214 1401.0035,-33.3716 1401.4639,-26.3868"/>
+<text text-anchor="start" x="1413" y="-31" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">not (axil_bready_sbd &amp;&amp; axil_bvalid_sbd) &#160;&#160;</text>
 </g>
 </g>
 </svg>

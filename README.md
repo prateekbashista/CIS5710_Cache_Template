@@ -96,7 +96,7 @@
 | Name        | Type | Value                               | Description |
 | ----------- | ---- | ----------------------------------- | ----------- |
 | BYTE_WIDTH  |      | 8                                   |             |
-| SIZE        |      | 32768                               |             |
+| SIZE        |      | 128                                 |             |
 | BLOCK_SIZE  |      | 1                                   |             |
 | WAYS        |      | 2                                   |             |
 | CACHE_LINES |      | ((SIZE*BYTE_WIDTH)/(BLOCK_SIZE*32)) |             |
@@ -106,31 +106,33 @@
 
 ## Types
 
-| Name   | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Description |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| states | enum logic [3:0] {<br><span style="padding-left:20px">  IDLE  = 4'h0,<br><span style="padding-left:20px">                                 WAIT_FOR_DATA = 4'h1,<br><span style="padding-left:20px">                                 READ = 4'h2,<br><span style="padding-left:20px">                                 WRITE = 4'h3,<br><span style="padding-left:20px">                                 MEM_READ_REQ = 4'h4,<br><span style="padding-left:20px">                                 MEM_AXI_RRESP = 4'h5,<br><span style="padding-left:20px">                                 MEM_WRITE_REQ = 4'h6,<br><span style="padding-left:20px">                                 MEM_AXI_BRESP = 4'h7,<br><span style="padding-left:20px">                                 READ_UPDATE = 4'h8,<br><span style="padding-left:20px">                                 WRITE_UPDATE = 4'h9,<br><span style="padding-left:20px">                                 MNG_RREADY = 4'hA,<br><span style="padding-left:20px">                                 MNG_BREADY = 4'hB } |             |
+| Name   | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Description |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| states | enum reg [3:0] {<br><span style="padding-left:20px">  IDLE  = 4'h0,<br><span style="padding-left:20px">                                 WAIT_FOR_DATA = 4'h1,<br><span style="padding-left:20px">                                 READ = 4'h2,<br><span style="padding-left:20px">                                 WRITE = 4'h3,<br><span style="padding-left:20px">                                 MEM_READ_REQ = 4'h4,<br><span style="padding-left:20px">                                 MEM_AXI_RRESP = 4'h5,<br><span style="padding-left:20px">                                 MEM_WRITE_REQ = 4'h6,<br><span style="padding-left:20px">                                 MEM_AXI_BRESP = 4'h7,<br><span style="padding-left:20px">                                 READ_UPDATE = 4'h8,<br><span style="padding-left:20px">                                 WRITE_UPDATE = 4'h9,<br><span style="padding-left:20px">                                 MNG_RREADY = 4'hA,<br><span style="padding-left:20px">                                 MNG_BREADY = 4'hB } |             |
 
 ## Processes
+- state_machine_driver: ( @( posedge clk ) )
+  - **Type:** always_ff
+- unnamed: ( @(posedge clk) )
+  - **Type:** always_ff
+- unnamed: ( @(posedge clk) )
+  - **Type:** always_ff
+- unnamed: ( @(posedge clk) )
+  - **Type:** always_ff
+- unnamed: ( @(posedge clk) )
+  - **Type:** always_ff
+- unnamed: ( @(posedge clk) )
+  - **Type:** always_ff
+- unnamed: ( @(posedge clk) )
+  - **Type:** always_ff
+- unnamed: ( @(posedge clk) )
+  - **Type:** always_ff
+- unnamed: ( @( posedge clk ) )
+  - **Type:** always_ff
+- unnamed: ( @( posedge clk ) )
+  - **Type:** always_ff
 - axi_interface: (  )
   - **Type:** always_comb
-- unnamed: ( @(posedge clk) )
-  - **Type:** always_ff
-- unnamed: ( @(posedge clk) )
-  - **Type:** always_ff
-- unnamed: ( @(posedge clk) )
-  - **Type:** always_ff
-- unnamed: ( @(posedge clk) )
-  - **Type:** always_ff
-- unnamed: ( @(posedge clk) )
-  - **Type:** always_ff
-- unnamed: ( @(posedge clk) )
-  - **Type:** always_ff
-- unnamed: ( @(posedge clk) )
-  - **Type:** always_ff
-- unnamed: ( @( posedge clk ) )
-  - **Type:** always_ff
-- unnamed: ( @( posedge clk ) )
-  - **Type:** always_ff
 - state_datapath: (  )
   - **Type:** always_comb
 
