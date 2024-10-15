@@ -12,7 +12,7 @@ module AXI_GPIO_tb;
 
 bit aclk = 0;
 bit aresetn=0;
-xil_axi_ulong addr1=32'h40100000, addr2 = 32'h40200000, addr3 = 32'h11111111, addr4 = 32'h40400000, addr5 = 32'h40500000;
+xil_axi_ulong addr1=32'h10111112, addr2 = 32'h11011112, addr3 = 32'h11111111, addr4 = 32'h40400000, addr5 = 32'h40500000;
 xil_axi_prot_t  prot = 0;
 bit [31:0] data_wr1=32'hAAAAAAAA,data_wr2=32'hBBBBBBBB, data_wr3 = 32'hCCCCCCCC, data_wr4=32'hDDDDDDDD,data_wr5=32'hEEEEEEEE;
 bit [31:0] data_rd1,data_rd2;
@@ -67,7 +67,7 @@ initial begin    //Create an agent
 
 
     #20ns    aresetn = 1;
-     #20ns     master_agent.AXI4LITE_READ_BURST(addr3,prot,data_rd1,resp);
+    #20ns     master_agent.AXI4LITE_WRITE_BURST(addr3,prot,data_wr3,resp);
     // #200ns    master_agent.AXI4LITE_WRITE_BURST(addr1,prot,data_wr1,resp);    
     // #200ns     master_agent.AXI4LITE_WRITE_BURST(addr2,prot,data_wr2,resp);   
     // #200ns    master_agent.AXI4LITE_WRITE_BURST(addr3,prot,data_wr3,resp);    
@@ -83,7 +83,10 @@ initial begin    //Create an agent
  
 
 
-     #400ns    master_agent.AXI4LITE_READ_BURST(addr3,prot,data_rd2,resp);   
+    #200ns    master_agent.AXI4LITE_WRITE_BURST(addr2,prot,data_wr2,resp);   
+    #200ns     master_agent.AXI4LITE_WRITE_BURST(addr1,prot,data_wr1,resp);
+    #200ns     master_agent.AXI4LITE_READ_BURST(addr1,prot,data_rd1,resp);
+
     // #50ns     master_agent.AXI4LITE_READ_BURST(addr3,prot,data_rd1,resp);
     // #200ns    if((data_wr1 == data_rd1)&&(data_wr2 == data_rd2))       
     //             $display("Data match, test succeeded");   

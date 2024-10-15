@@ -16,14 +16,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="958.001 ns"></ZoomEndTime>
-      <Cursor1Time time="30.000 ns"></Cursor1Time>
+      <ZoomEndTime time="2,420.001 ns"></ZoomEndTime>
+      <Cursor1Time time="290.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="243"></NameColumnWidth>
+      <NameColumnWidth column_width="238"></NameColumnWidth>
       <ValueColumnWidth column_width="79"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="46" />
+   <WVObjectSize size="38" />
    <wvobject type="logic" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -167,38 +167,6 @@
    <wvobject type="array" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/next_state">
       <obj_property name="ElementShortName">next_state[3:0]</obj_property>
       <obj_property name="ObjectShortName">next_state[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/lru_ram/clk">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/lru_ram/addr">
-      <obj_property name="ElementShortName">addr[3:0]</obj_property>
-      <obj_property name="ObjectShortName">addr[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/lru_ram/re">
-      <obj_property name="ElementShortName">re</obj_property>
-      <obj_property name="ObjectShortName">re</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/lru_ram/data_out">
-      <obj_property name="ElementShortName">data_out[0:0]</obj_property>
-      <obj_property name="ObjectShortName">data_out[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/lru_ram/data_in">
-      <obj_property name="ElementShortName">data_in[0:0]</obj_property>
-      <obj_property name="ObjectShortName">data_in[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/lru_ram/we">
-      <obj_property name="ElementShortName">we</obj_property>
-      <obj_property name="ObjectShortName">we</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/lru_ram/data">
-      <obj_property name="ElementShortName">data[0:0]</obj_property>
-      <obj_property name="ObjectShortName">data[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/lru_ram/mem">
-      <obj_property name="ElementShortName">mem[0:15][0:0]</obj_property>
-      <obj_property name="ObjectShortName">mem[0:15][0:0]</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/AXI_GPIO_tb/DUT/design_1_i/vivado_cache_wrapper_0/inst/cache_inst/lru_way">
       <obj_property name="ElementShortName">lru_way</obj_property>

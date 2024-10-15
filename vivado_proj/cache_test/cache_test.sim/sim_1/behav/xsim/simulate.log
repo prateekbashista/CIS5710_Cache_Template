@@ -1,0 +1,177 @@
+Time resolution is 1 ps
+XilinxAXIVIP: Found at Path: AXI_GPIO_tb.DUT.design_1_i.axi_vip_0.inst
+XilinxAXIVIP: Found at Path: AXI_GPIO_tb.DUT.design_1_i.axi_vip_1.inst
+WARNING: 30 ns AXI_GPIO_tb.DUT.design_1_i.axi_vip_0.inst.IF.AWREADY_one_cycle_chk : XILINX_AWREADY_RESET: AWREADY must be low for the first clock edge that ARESETn goes high--PG101 XILINX_AWREADY_RESET. To downgrade, use <hierarchy_path to VIP>.IF.clr_xilinx_slave_ready_check().
+WARNING: 30 ns AXI_GPIO_tb.DUT.design_1_i.axi_vip_0.inst.IF.WREADY_one_cycle_chk : XILINX_WREADY_RESET: WREADY must be low for the first clock edge that ARESETn goes high--PG101 XILINX_WREADY_RESET. To downgrade, use <hierarchy_path to VIP>.IF.clr_xilinx_slave_ready_check().
+WARNING: 30 ns AXI_GPIO_tb.DUT.design_1_i.axi_vip_0.inst.IF.ARREADY_one_cycle_chk : XILINX_ARREADY_RESET: ARREADY must be low for the first clock edge that ARESETn goes high--PG101 XILINX_ARREADY_RESET. To downgrade, use <hierarchy_path to VIP>.IF.clr_xilinx_slave_ready_check().
+INFO: [My Master VIP_monitor] (.axi_vip_pkg.\axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::run_phase .Block8312_3.) 30 ns : run()
+INFO: [My Master VIP_wr_driver] (.axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::run_phase .Block9489_17.) 30 ns : run()
+INFO: [My Master VIP_rd_driver] (.axi_vip_pkg.\axi_mst_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::run_phase .Block10569_67.) 30 ns : run()
+INFO: [My Slave VIP_monitor] (.axi_vip_pkg.\axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::run_phase .Block8312_3.) 30 ns : run()
+INFO: [My Slave VIP_wr_driver] (.axi_vip_pkg.\axi_slv_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::run_phase .Block12308_113.) 30 ns : run()
+INFO: [My Slave VIP_rd_driver] (.axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::run_phase .Block13800_161.) 30 ns : run()
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 40 ns : Sending transaction: 
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 40 ns : ---------------------------------------------------------------------------------------------
+  Name                         Value
+---------------------------------------------------------------------------------------------
+  CMD                          XIL_AXI_WRITE
+  ADDR                         0x0000000011111111 
+  WID                          0x00000000
+  LEN                          0x00
+  SIZE                         0x010
+  BURST                        0x01
+  CACHE                        0x0000
+  LOCK                         0x00
+  PROT                         0x000
+  REGION                       0x0000
+  QOS                          0x0000
+  BRESP                        XIL_AXI_RESP_OKAY
+  DRIVER_RETURN_ITEM           XIL_AXI_PAYLOAD_RETURN 
+  CREATION_TIME                40 ns
+  SUBMIT_TIME                  0 ns
+  PAYLOAD                      4
+    BEAT[          0]          0xcccccccc (strb : 0b1110) :beat_delay:         0
+--------------------------------------------------------------------------------------------
+ERROR: 70 ns AXI_GPIO_tb.DUT.design_1_i.axi_vip_0.inst.IF  : XILINX_NO_STRB_ADDRESS: Address is not aligned with data width. Connection has been declared to No STRB. To downgrade, use <hierarchy_path to VIP>.IF.set_xilinx_no_strb_address_check_to_warn(), or filter using clr_xilinx_no_strb_address_check().
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::w_channel .W_CHANNEL.Block9970_49.Block9970_50) 170 ns : WREADY+WLAST (         0) id=0x00000000
+INFO: [My Slave VIP_rd_driver] (axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_rd_reactive ) 210 ns : ARVALID >>>
+XIL_AXI_READ (3) A:0x0000000011111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000<<<
+INFO: [My Slave VIP_rd_driver] (axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 210 ns : GNI : XIL_AXI_READ (3) A:0x0000000011111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000
+INFO: [My Slave VIP_rd_driver] (axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::drive_r_channel ) 310 ns : RVALID (4294967295) id=0x00000000, len   0
+Error: [My Master VIP_monitor] (axi_vip_pkg.\axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::check_burst .NO_STRB) 370 ns : AXI Address (0x11111111) cannot be unaligned when HAS_STRB is 0.
+ Transaction: ---------------------------------------------------------------------------------------------
+  Name                         Value
+---------------------------------------------------------------------------------------------
+  CMD                          XIL_AXI_WRITE
+  ADDR                         0x0000000011111111 
+  WID                          0x00000000
+  LEN                          0x00
+  SIZE                         0x010
+  BURST                        0x01
+  CACHE                        0x0000
+  LOCK                         0x00
+  PROT                         0x000
+  REGION                       0x0000
+  QOS                          0x0000
+  BRESP                        XIL_AXI_RESP_OKAY
+  DRIVER_RETURN_ITEM           XIL_AXI_NO_RETURN 
+  CREATION_TIME                70 ns
+  SUBMIT_TIME                  0 ns
+  PAYLOAD                      4
+    BEAT[          0]          0xxxxxxxxx (strb : 0b0000) :beat_delay:         0
+--------------------------------------------------------------------------------------------
+Time: 370 ns  Iteration: 1  Process: /axi_vip_pkg/axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::b_channel/B_LOOP  Scope: axi_vip_pkg.\axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::check_burst .NO_STRB  File: /tools/Xilinx/Vivado/2021.2/data/xilinx_vip/hdl/axi_vip_pkg.sv Line: 9128
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::service_done_q .SERVICE_DONE_Q) 370 ns : SERVICE_DONE_Q: XIL_AXI_WRITE (0) A:0x0000000011111111 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 570 ns : Sending transaction: 
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 570 ns : ---------------------------------------------------------------------------------------------
+  Name                         Value
+---------------------------------------------------------------------------------------------
+  CMD                          XIL_AXI_WRITE
+  ADDR                         0x0000000011011112 
+  WID                          0x00000000
+  LEN                          0x00
+  SIZE                         0x010
+  BURST                        0x01
+  CACHE                        0x0000
+  LOCK                         0x00
+  PROT                         0x000
+  REGION                       0x0000
+  QOS                          0x0000
+  BRESP                        XIL_AXI_RESP_OKAY
+  DRIVER_RETURN_ITEM           XIL_AXI_PAYLOAD_RETURN 
+  CREATION_TIME                570 ns
+  SUBMIT_TIME                  0 ns
+  PAYLOAD                      4
+    BEAT[          0]          0xbbbbbbbb (strb : 0b1100) :beat_delay:         0
+--------------------------------------------------------------------------------------------
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::w_channel .W_CHANNEL.Block9970_49.Block9970_50) 690 ns : WREADY+WLAST (         0) id=0x00000000
+INFO: [My Slave VIP_rd_driver] (axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_rd_reactive ) 730 ns : ARVALID >>>
+XIL_AXI_READ (11) A:0x0000000011011110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000<<<
+INFO: [My Slave VIP_rd_driver] (axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 730 ns : GNI : XIL_AXI_READ (11) A:0x0000000011011110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000
+INFO: [My Slave VIP_rd_driver] (axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::drive_r_channel ) 830 ns : RVALID (4294967295) id=0x00000000, len   0
+Error: [My Master VIP_monitor] (axi_vip_pkg.\axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::check_burst .NO_STRB) 890 ns : AXI Address (0x11011112) cannot be unaligned when HAS_STRB is 0.
+ Transaction: ---------------------------------------------------------------------------------------------
+  Name                         Value
+---------------------------------------------------------------------------------------------
+  CMD                          XIL_AXI_WRITE
+  ADDR                         0x0000000011011112 
+  WID                          0x00000000
+  LEN                          0x00
+  SIZE                         0x010
+  BURST                        0x01
+  CACHE                        0x0000
+  LOCK                         0x00
+  PROT                         0x000
+  REGION                       0x0000
+  QOS                          0x0000
+  BRESP                        XIL_AXI_RESP_OKAY
+  DRIVER_RETURN_ITEM           XIL_AXI_NO_RETURN 
+  CREATION_TIME                590 ns
+  SUBMIT_TIME                  0 ns
+  PAYLOAD                      4
+    BEAT[          0]          0xxxxxxxxx (strb : 0b0000) :beat_delay:         0
+--------------------------------------------------------------------------------------------
+Time: 890 ns  Iteration: 1  Process: /axi_vip_pkg/axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::b_channel/B_LOOP  Scope: axi_vip_pkg.\axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::check_burst .NO_STRB  File: /tools/Xilinx/Vivado/2021.2/data/xilinx_vip/hdl/axi_vip_pkg.sv Line: 9128
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::service_done_q .SERVICE_DONE_Q) 890 ns : SERVICE_DONE_Q: XIL_AXI_WRITE (7) A:0x0000000011011112 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 1090 ns : Sending transaction: 
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 1090 ns : ---------------------------------------------------------------------------------------------
+  Name                         Value
+---------------------------------------------------------------------------------------------
+  CMD                          XIL_AXI_WRITE
+  ADDR                         0x0000000010111112 
+  WID                          0x00000000
+  LEN                          0x00
+  SIZE                         0x010
+  BURST                        0x01
+  CACHE                        0x0000
+  LOCK                         0x00
+  PROT                         0x000
+  REGION                       0x0000
+  QOS                          0x0000
+  BRESP                        XIL_AXI_RESP_OKAY
+  DRIVER_RETURN_ITEM           XIL_AXI_PAYLOAD_RETURN 
+  CREATION_TIME                1090 ns
+  SUBMIT_TIME                  0 ns
+  PAYLOAD                      4
+    BEAT[          0]          0xaaaaaaaa (strb : 0b1100) :beat_delay:         0
+--------------------------------------------------------------------------------------------
+INFO: [My Master VIP_wr_driver] (axi_vip_pkg.\axi_mst_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::w_channel .W_CHANNEL.Block9970_49.Block9970_50) 1210 ns : WREADY+WLAST (         0) id=0x00000000
+INFO: [My Slave VIP_wr_driver] (axi_vip_pkg.\axi_slv_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::w_channel .W_CHANNEL) 1250 ns : W LAST -- write_beat     Last:1 D:0xcccccccc BE:0b1111 
+INFO: [My Slave VIP_wr_driver] (axi_vip_pkg.\axi_slv_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::aw_channel .AW_CHANNEL) 1250 ns : AWVALID >>>
+XIL_AXI_WRITE (17) A:0x0000000010111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000<<<
+INFO: [My Slave VIP_wr_driver] (axi_vip_pkg.\axi_slv_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::push_reactive_q ) 1250 ns : PUSH_REACTIVE_Q: PUSH (         0) >>> XIL_AXI_WRITE (17) A:0x0000000010111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000 <<<
+INFO: [My Slave VIP_wr_driver] (axi_vip_pkg.\axi_slv_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::pop_reactive_q ) 1250 ns : POP_REACTIVE_Q: (         1) >>> XIL_AXI_WRITE (17) A:0x0000000010111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000 <<<
+INFO: [My Slave VIP_wr_driver] (axi_vip_pkg.\axi_slv_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 1250 ns : GNI : XIL_AXI_WRITE (17) A:0x0000000010111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000
+INFO: [My Slave VIP_wr_driver] (axi_vip_pkg.\axi_slv_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::push_b_q ) 1250 ns : B PUSH (         0)
+INFO: [My Slave VIP_wr_driver] (axi_vip_pkg.\axi_slv_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::push_b_q ) 1250 ns : ID=0x00000000 - State 0b0111
+Entries in BQ : NumEntries:         0 >>> 
+ <<<
+Command       : XIL_AXI_WRITE (17) A:0x0000000010111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000
+INFO: [My Slave VIP_wr_driver] (axi_vip_pkg.\axi_slv_wr_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::service_done_q .SERVICE_DONE_Q) 1270 ns : SERVICE_DONE_Q: XIL_AXI_WRITE (17) A:0x0000000010111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000
+INFO: [My Slave VIP_rd_driver] (axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_rd_reactive ) 1290 ns : ARVALID >>>
+XIL_AXI_READ (22) A:0x0000000010111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000<<<
+INFO: [My Slave VIP_rd_driver] (axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::get_and_drive .GET_AND_DRIVE) 1290 ns : GNI : XIL_AXI_READ (22) A:0x0000000010111110 ID:0x00000000 len:0x00 XIL_AXI_SIZE_4BYTE XIL_AXI_BURST_TYPE_INCR C:0b0000 L:XIL_AXI_ALOCK_NOLOCK P:0b000
+INFO: [My Slave VIP_rd_driver] (axi_vip_pkg.\axi_slv_rd_driver(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::drive_r_channel ) 1390 ns : RVALID (4294967295) id=0x00000000, len   0
+Error: [My Master VIP_monitor] (axi_vip_pkg.\axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::check_burst .NO_STRB) 1450 ns : AXI Address (0x10111112) cannot be unaligned when HAS_STRB is 0.
+ Transaction: ---------------------------------------------------------------------------------------------
+  Name                         Value
+---------------------------------------------------------------------------------------------
+  CMD                          XIL_AXI_WRITE
+  ADDR                         0x0000000010111112 
+  WID                          0x00000000
+  LEN                          0x00
+  SIZE                         0x010
+  BURST                        0x01
+  CACHE                        0x0000
+  LOCK                         0x00
+  PROT                         0x000
+  REGION                       0x0000
+  QOS                          0x0000
+  BRESP                        XIL_AXI_RESP_OKAY
+  DRIVER_RETURN_ITEM           XIL_AXI_NO_RETURN 
+  CREATION_TIME                1110 ns
+  SUBMIT_TIME                  0 ns
+  PAYLOAD                      4
+    BEAT[          0]          0xxxxxxxxx (strb : 0b0000) :beat_delay:         0
+--------------------------------------------------------------------------------------------
+Time: 1450 ns  Iteration: 1  Process: /axi_vip_pkg/axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::b_channel/B_LOOP  Scope: axi_vip_pkg.\axi_monitor(C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_NARROW=0,C_AXI_HAS_BURST=0,C_AXI_HAS_LOCK=0,C_AXI_HAS_CACHE=0,C_AXI_HAS_REGION=0,C_AXI_HAS_PROT=0,C_AXI_HAS_QOS=0,C_AXI_HAS_WSTRB=0)::check_burst .NO_STRB  File: /tools/Xilinx/Vivado/2021.2/data/xilinx_vip/hdl/axi_vip_pkg.sv Line: 9128

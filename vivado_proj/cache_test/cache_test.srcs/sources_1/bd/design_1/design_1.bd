@@ -122,6 +122,12 @@
         "xci_path": "ip/design_1_axi_vip_1_0/design_1_axi_vip_1_0.xci",
         "inst_hier_path": "axi_vip_1",
         "parameters": {
+          "ADDR_WIDTH": {
+            "value": "32"
+          },
+          "DATA_WIDTH": {
+            "value": "32"
+          },
           "HAS_ARESETN": {
             "value": "1"
           },
@@ -130,6 +136,9 @@
           },
           "PROTOCOL": {
             "value": "AXI4LITE"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_WRITE"
           }
         }
       },

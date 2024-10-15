@@ -146,7 +146,7 @@ output logic                axil_rready_mng     // Read Response Ready Out
     logic read_enable[2];               // Array, for each Bank Read Enable
     logic [31 : 0] data_out[2];         // Output from the RAM
     logic [31 : 0] data_in[2];          // Data to be written in RAM
-    reg write_enable[2];              // Write-Enable
+    logic write_enable[2];              // Write-Enable
 
     sram
     #(
@@ -559,7 +559,14 @@ output logic                axil_rready_mng     // Read Response Ready Out
             end
         end
         MEM_READ_REQ : begin
-            next_state = MEM_AXI_RRESP;
+
+            if(axil_arvalid_mng && axil_arready_mng) begin
+                next_state = MEM_AXI_RRESP;
+            end
+            else begin
+                next_state = MEM_READ_REQ;
+            end
+
         end
         MEM_AXI_RRESP : begin
             if(axil_rready_mng && axil_rvalid_mng) begin
@@ -575,7 +582,13 @@ output logic                axil_rready_mng     // Read Response Ready Out
             end
         end
         MEM_WRITE_REQ : begin
-            next_state = MEM_AXI_BRESP;
+            
+            if(axil_awready_mng && axil_awvalid_mng && axil_wready_mng && axil_wvalid_mng) begin
+                next_state = MEM_AXI_BRESP;
+            end
+            else begin
+                next_state = MEM_WRITE_REQ;
+            end
         end
         MEM_AXI_BRESP : begin
 
@@ -936,10 +949,6 @@ output logic                axil_rready_mng     // Read Response Ready Out
             axil_awready_sbd = 1'b0;
             axil_wready_sbd = 1'b0;
 
-            // Send Read Request to Memory
-            axil_araddr_mng = {tag,index,2'b00};
-            axil_arvalid_mng = 1'b1;
-
             //Ready to recieve response
             axil_rready_mng = 1'b1;
 
@@ -970,14 +979,6 @@ output logic                axil_rready_mng     // Read Response Ready Out
             axil_arready_sbd = 1'b0;
             axil_awready_sbd = 1'b0;
             axil_wready_sbd = 1'b0;
-
-            // Send Write Request to Memory
-            axil_awaddr_mng = {tag,index,2'b00};
-            axil_awvalid_mng = 1'b1;
-
-            //Send Write Data to memory
-            axil_wdata_mng = writeback_data;
-            axil_wvalid_mng = 1'b1;
 
              //Ready to recieve response
             axil_bready_mng = 1'b1;
