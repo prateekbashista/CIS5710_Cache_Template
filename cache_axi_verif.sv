@@ -68,42 +68,12 @@ initial begin    //Create an agent
 
     #20ns    aresetn = 1;
     #20ns     master_agent.AXI4LITE_WRITE_BURST(addr3,prot,data_wr3,resp);
-    // #200ns    master_agent.AXI4LITE_WRITE_BURST(addr1,prot,data_wr1,resp);    
-    // #200ns     master_agent.AXI4LITE_WRITE_BURST(addr2,prot,data_wr2,resp);   
-    // #200ns    master_agent.AXI4LITE_WRITE_BURST(addr3,prot,data_wr3,resp);    
-    // #200ns    master_agent.AXI4LITE_WRITE_BURST(addr4,prot,data_wr4,resp);    
-    // #200ns     master_agent.AXI4LITE_WRITE_BURST(addr5,prot,data_wr5,resp);   
-    
-    
-    //#200ns    invalidate_mst_agent.driver.send(wr_transaction); // Invalidating Command
-    //#1000ns    master_agent.AXI4LITE_WRITE_BURST(addr3,prot,data_wr3,resp); 
-
-   
-    //#200ns    master_agent.AXI4LITE_READ_BURST(i*4,prot,data_rd2,resp);
- 
-
-
     #200ns    master_agent.AXI4LITE_WRITE_BURST(addr2,prot,data_wr2,resp);   
     #200ns     master_agent.AXI4LITE_WRITE_BURST(addr1,prot,data_wr1,resp);
     #200ns     master_agent.AXI4LITE_READ_BURST(addr1,prot,data_rd1,resp);
+    #200ns     master_agent.AXI4LITE_WRITE_BURST(addr1,prot,data_wr4,resp);
+    #200ns     master_agent.AXI4LITE_READ_BURST(addr1,prot,data_rd1,resp);
 
-    // #50ns     master_agent.AXI4LITE_READ_BURST(addr3,prot,data_rd1,resp);
-    // #200ns    if((data_wr1 == data_rd1)&&(data_wr2 == data_rd2))       
-    //             $display("Data match, test succeeded");   
-    //           else        
-    //             $display("Data do not match, test failed");    
-    // #20ns    master_agent.AXI4LITE_WRITE_BURST(addr1,prot,data_wr1,resp);
-    //#200ns    master_agent.AXI4LITE_WRITE_BURST(addr2,prot,data_wr2,resp);
-    // #200ns    master_agent.AXI4LITE_WRITE_BURST(addr3,prot,data_wr3,resp);
-    // #200ns    master_agent.AXI4LITE_READ_BURST(addr3,prot,data_rd2,resp);
-    //#200ns    master_agent.AXI4LITE_READ_BURST(addr2,prot,data_rd2,resp);
-    // #200ns    master_agent.AXI4LITE_READ_BURST(addr1,prot,data_rd2,resp);
-    // #200ns    master_agent.AXI4LITE_WRITE_BURST(addr5,prot,data_wr3,resp);
-//     #200ns    master_agent.AXI4LITE_READ_BURST(addr1,prot,data_rd2,resp);
-//     // #200ns    master_agent.AXI4LITE_WRITE_BURST(addr1,prot,data_wr2,resp);
-//     #200ns    master_agent.AXI4LITE_READ_BURST(addr1,prot,data_rd2,resp);
-//     #200ns    master_agent.AXI4LITE_WRITE_BURST(addr1,prot,data_wr2,resp);
-//     #200ns    master_agent.AXI4LITE_READ_BURST(addr1,prot,data_rd2,resp);
  end
 
 endmodule

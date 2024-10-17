@@ -2,3 +2,6 @@ Running: xsim.dir/AXI_GPIO_tb_behav/xsimk -simmode gui -wdb AXI_GPIO_tb_behav.wd
 Design successfully loaded
 Design Loading Memory Usage: 38296 KB (Peak: 38304 KB)
 Design Loading CPU Usage: 40 ms
+Simulation completed
+Simulation Memory Usage: 125848 KB (Peak: 431516 KB)
+Simulation CPU Usage: 100 ms
