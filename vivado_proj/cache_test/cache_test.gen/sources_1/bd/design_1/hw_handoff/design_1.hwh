@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Oct 15 13:01:00 2024" VIVADOVERSION="2021.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Oct 17 13:22:56 2024" VIVADOVERSION="2021.2">
 
   <SYSTEMINFO ARCH="virtexuplusHBM" BOARD="xilinx.com:au280:part0:1.1" DEVICE="xcu280" NAME="design_1" PACKAGE="fsvh2892" SPEEDGRADE="-2L"/>
 

@@ -1,2 +1,17 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv:682]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv:683]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [/mnt/share/home/bashista/CIS5710_Cache_Template/cache.sv:684]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/memory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sram
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_cache_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vivado_cache_wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/bd/design_1/ip/design_1_vivado_cache_wrapper_0_0/sim/design_1_vivado_cache_wrapper_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_vivado_cache_wrapper_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.ip_user_files/bd/design_1/sim/design_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/vivado_proj/cache_test/cache_test.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_wrapper
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/mnt/share/home/bashista/CIS5710_Cache_Template/cache_axi_verif.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AXI_GPIO_tb

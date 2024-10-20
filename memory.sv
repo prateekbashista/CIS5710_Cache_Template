@@ -38,7 +38,7 @@ module sram
                 mem[i] <= 0;
             end
         end
-        if(we && !re) begin
+        else if(we && !re) begin
            mem[addr] <= data_in;
         end 
     end
